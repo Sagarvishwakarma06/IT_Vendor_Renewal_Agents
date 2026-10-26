@@ -1,0 +1,13 @@
+﻿vendor,incident_id,severity,response_hours,sla_hours
+VendorA,INC-001,high,6.0,4.0
+VendorA,INC-002,medium,3.5,8.0
+VendorA,INC-003,low,24.0,48.0
+VendorA,INC-004,high,3.8,4.0
+VendorA,INC-005,medium,9.2,8.0
+VendorA,INC-006,critical,1.5,2.0
+VendorA,INC-007,critical,2.3,2.0
+VendorB,INC-101,high,2.1,4.0
+VendorB,INC-102,medium,5.0,8.0
+VendorB,INC-103,low,10.0,48.0
+VendorB,INC-104,high,3.9,4.0
+VendorB,INC-105,critical,0.8,2.0

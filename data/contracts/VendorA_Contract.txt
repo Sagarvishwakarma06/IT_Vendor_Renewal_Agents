@@ -1,0 +1,54 @@
+﻿IT SOFTWARE LICENCE AGREEMENT
+Vendor: VendorA Solutions Ltd.
+Contract Reference: VSL-2023-0047
+
+1. PARTIES
+   Licensee: Contoso Corporation
+   Licensor: VendorA Solutions Ltd.
+
+2. CONTRACT TERM
+   Contract Start Date: 1 January 2024
+   Contract End Date: 31 December 2026
+
+3. RENEWAL CLAUSE
+   This Agreement shall automatically renew for successive one-year terms unless either party provides
+   written notice of non-renewal at least 90 days prior to the end of the then-current term.
+   Renewal Type: Automatic annual renewal
+
+4. NOTICE PERIOD
+   Notice Period: 90 days before contract end date.
+   Notice must be delivered in writing to the account manager at the address specified in Schedule A.
+
+5. SERVICE LEVEL AGREEMENT (SLA)
+   5.1 Critical Incidents: Response within 2 hours, resolution within 8 hours.
+   5.2 High Severity Incidents: Response within 4 hours, resolution within 24 hours.
+   5.3 Medium Severity Incidents: Response within 8 hours, resolution within 72 hours.
+   5.4 Low Severity Incidents: Response within 48 hours, resolution within 5 business days.
+   5.5 SLA achievement target: 95% of incidents must meet response-time targets per quarter.
+   5.6 Service credits apply if SLA achievement falls below 90% in any calendar quarter.
+
+6. ANNUAL RENEWAL COST
+   Year 1 (2024): GBP 90,000
+   Year 2 (2025): GBP 93,500 (3.9% uplift)
+   Year 3 (2026): GBP 97,000 (3.7% uplift, indicative)
+   Quoted renewal for Year 4 (2027): GBP 95,000 (negotiated discount applied)
+
+7. LICENCES
+   500 named-user software licences as described in Schedule B.
+   Unused licences may not be carried forward or refunded.
+
+8. TERMINATION FOR CONVENIENCE
+   Either party may terminate this Agreement for convenience by providing 90 days written notice.
+   Early termination by the Licensee before end of term will incur a termination fee equal to
+   three months of the then-current annual contract value.
+
+9. GOVERNING LAW
+   This Agreement is governed by the laws of England and Wales.
+
+SCHEDULE A - CONTACT DETAILS
+Licensor Account Manager: accounts@vendora-solutions.example.com
+
+SCHEDULE B - LICENSED SOFTWARE
+VendorA Enterprise Suite v4.x including all standard modules.
+
+NOTE: This is a fictional demonstration contract. All names, figures, and terms are synthetic.

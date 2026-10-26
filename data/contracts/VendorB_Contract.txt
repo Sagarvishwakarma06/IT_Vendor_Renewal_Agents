@@ -1,0 +1,44 @@
+﻿MANAGED SERVICES AGREEMENT
+Vendor: VendorB Technologies Plc
+Contract Reference: VBT-2024-0012
+
+1. PARTIES
+   Client: Contoso Corporation
+   Service Provider: VendorB Technologies Plc
+
+2. CONTRACT TERM
+   Contract Start Date: 1 April 2024
+   Contract End Date: 31 March 2026
+
+3. RENEWAL CLAUSE
+   This Agreement will NOT renew automatically. The Client must provide written notice of renewal
+   intention at least 60 days before the contract end date to continue service.
+   Renewal Type: Manual renewal required
+
+4. NOTICE PERIOD
+   Notice Period: 60 days before contract end date.
+   Failure to provide notice by the deadline will result in service discontinuation.
+
+5. SERVICE LEVEL AGREEMENT (SLA)
+   5.1 Critical Incidents: Response within 2 hours, resolution within 4 hours.
+   5.2 High Severity Incidents: Response within 4 hours, resolution within 12 hours.
+   5.3 Medium Severity Incidents: Response within 8 hours, resolution within 48 hours.
+   5.4 Low Severity Incidents: Response within 48 hours, resolution within 5 business days.
+   5.5 Monthly SLA achievement target: 98% of critical and high incidents must meet response targets.
+
+6. ANNUAL RENEWAL COST
+   Year 1 (2024-25): GBP 46,000
+   Year 2 (2025-26): GBP 48,500 (5.4% uplift)
+   Quoted renewal for Year 3 (2026-27): GBP 48,000 (pricing held flat)
+
+7. LICENCES
+   200 concurrent-user licences for VendorB Cloud Platform.
+   Additional licences available at GBP 180 per licence per year.
+
+8. TERMINATION
+   Client may terminate with 60 days written notice. No early termination fee applies.
+
+9. GOVERNING LAW
+   This Agreement is governed by Scottish law.
+
+NOTE: This is a fictional demonstration contract. All names, figures, and terms are synthetic.
