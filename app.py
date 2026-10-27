@@ -1,4 +1,4 @@
-﻿"""
+"""
 app.py
 ------
 Interactive Streamlit Web Application for the IT Vendor Renewal Decision Support Agent.
@@ -246,21 +246,32 @@ with tab_rec:
     exec_md = generate_executive_markdown(result)
     exec_html = generate_executive_html(result)
 
-    exp_col1, exp_col2 = st.columns(2)
+    exp_col1, exp_col2, exp_col3 = st.columns(3)
     with exp_col1:
         st.download_button(
-            label="📥 Download Executive Markdown Report",
+            label="📥 Download Executive Markdown",
             data=exec_md,
             file_name=f"{vendor_name}_Executive_Renewal_Report.md",
             mime="text/markdown",
         )
     with exp_col2:
         st.download_button(
-            label="🌐 Download Print-Ready HTML Report",
+            label="🌐 Download Print-Ready HTML",
             data=exec_html,
             file_name=f"{vendor_name}_Executive_Renewal_Report.html",
             mime="text/html",
         )
+    with exp_col3:
+        presentation_pdf = BASE_DIR / "IT_Vendor_Renewal_Agent_Company_Presentation.pdf"
+        if presentation_pdf.exists():
+            with open(presentation_pdf, "rb") as pdf_file:
+                pdf_bytes = pdf_file.read()
+            st.download_button(
+                label="📄 Download Presentation PDF",
+                data=pdf_bytes,
+                file_name="IT_Vendor_Renewal_Agent_Company_Presentation.pdf",
+                mime="application/pdf",
+            )
 
 # TAB 2: COST COMPARISON
 with tab_cost:

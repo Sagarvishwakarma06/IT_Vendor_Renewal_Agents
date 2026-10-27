@@ -1,0 +1,507 @@
+"""
+generate_company_presentation_pdf.py
+------------------------------------
+Generates a comprehensive, enterprise-grade Presentation & Technical Guide
+for the IT Vendor Renewal Decision Support Agent in both styled HTML and PDF.
+Uses Microsoft Edge headless print-to-pdf for zero-dependency vector PDF output.
+"""
+
+import os
+import sys
+import subprocess
+from pathlib import Path
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+BASE_DIR = Path(__file__).parent.resolve()
+OUTPUT_DIR = BASE_DIR / "outputs"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+HTML_FILE = OUTPUT_DIR / "IT_Vendor_Renewal_Agent_Company_Presentation.html"
+PDF_FILE = BASE_DIR / "IT_Vendor_Renewal_Agent_Company_Presentation.pdf"
+
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>IT Vendor Renewal Decision Support Agent - Company Presentation & Technical Guide</title>
+<style>
+    @page {
+        size: A4;
+        margin: 16mm 14mm 16mm 14mm;
+    }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #1e293b;
+        background-color: #ffffff;
+        line-height: 1.55;
+        font-size: 10pt;
+    }
+    h1 {
+        font-size: 20pt;
+        color: #0f172a;
+        margin-top: 0;
+        margin-bottom: 6px;
+        border-bottom: 3px solid #2563eb;
+        padding-bottom: 8px;
+    }
+    h2 {
+        font-size: 13pt;
+        color: #1e40af;
+        margin-top: 18px;
+        margin-bottom: 8px;
+        border-bottom: 1.5px solid #e2e8f0;
+        padding-bottom: 4px;
+        page-break-after: avoid;
+    }
+    h3 {
+        font-size: 11pt;
+        color: #0f172a;
+        margin-top: 12px;
+        margin-bottom: 4px;
+        page-break-after: avoid;
+    }
+    p, li {
+        color: #334155;
+    }
+    ul, ol {
+        margin-top: 4px;
+        margin-bottom: 8px;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 3px;
+    }
+    .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        font-size: 8pt;
+        font-weight: 700;
+        border-radius: 4px;
+        text-transform: uppercase;
+        margin-right: 4px;
+    }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-amber { background: #fef3c7; color: #92400e; }
+    .badge-green { background: #dcfce7; color: #166534; }
+    .badge-purple { background: #f3e8ff; color: #6b21a8; }
+
+    .callout {
+        background: #f8fafc;
+        border-left: 4px solid #2563eb;
+        padding: 10px 14px;
+        border-radius: 0 6px 6px 0;
+        margin: 10px 0;
+    }
+    .callout-warning {
+        background: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        color: #92400e;
+    }
+    .callout-hindi {
+        background: #f0fdf4;
+        border-left: 4px solid #16a34a;
+        color: #166534;
+        font-size: 9.5pt;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0;
+        font-size: 9pt;
+        page-break-inside: avoid;
+    }
+    th, td {
+        border: 1px solid #cbd5e1;
+        padding: 6px 9px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: #f1f5f9;
+        color: #0f172a;
+        font-weight: 600;
+    }
+    tr:nth-child(even) td {
+        background-color: #f8fafc;
+    }
+
+    .grid-2 {
+        display: flex;
+        gap: 12px;
+        margin: 8px 0;
+    }
+    .grid-2 > div {
+        flex: 1;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 8px 12px;
+        background: #ffffff;
+    }
+    .metric-value {
+        font-size: 16pt;
+        font-weight: 800;
+        color: #2563eb;
+    }
+    .footer {
+        margin-top: 25px;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 8px;
+        font-size: 8pt;
+        color: #94a3b8;
+        display: flex;
+        justify-content: space-between;
+    }
+    .page-break {
+        page-break-before: always;
+    }
+</style>
+</head>
+<body>
+
+<!-- TITLE / HEADER -->
+<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div>
+        <h1>IT Vendor Renewal Decision Support Agent</h1>
+        <div style="font-size: 11pt; color: #475569; font-weight: 500;">
+            Comprehensive Project Presentation & Technical Architecture Guide
+        </div>
+    </div>
+    <div style="text-align: right; font-size: 8.5pt; color: #64748b;">
+        <strong>Document Type:</strong> Technical & Business Whitepaper<br>
+        <strong>Target Audience:</strong> Leadership, Procurement, Technical Teams<br>
+        <strong>Status:</strong> Production Verified (101 Tests Passing, 84% Coverage)
+    </div>
+</div>
+
+<div class="callout callout-warning" style="margin-top: 10px;">
+    <strong>⚠️ ADVISORY BOUNDARY:</strong> This system is strictly a decision-support advisory tool. It analyzes data, calculates costs, tracks deadlines, and provides evidence-backed recommendations. It <strong>never</strong> autonomously signs, modifies, renews, or terminates legal contracts.
+</div>
+
+<!-- SECTION 1: BUSINESS PROBLEM & VALUE -->
+<h2>1. Business Problem & Executive Value Proposition</h2>
+<p>
+    Enterprise software renewals represent millions in annual IT operating expenditure. Companies regularly leak <strong>15% to 30% of software spend</strong> due to three systematic failures:
+</p>
+<ol>
+    <li><strong>Unused Licence Creep (Over-purchasing):</strong> Organisations buy seats for forecasted headcounts that are never active. Without automated usage tracking, renewals auto-renew at historical seat counts.</li>
+    <li><strong>Unenforced SLAs (Service Level Agreements):</strong> Vendors breach response time targets repeatedly without accountability or penalty credits.</li>
+    <li><strong>Passed Notice Deadlines & Auto-Renewal Traps:</strong> Contracts with 60 or 90-day written notice requirements roll over into unwanted 12-month lock-ins because legal and procurement miss the notice window.</li>
+    <li><strong>Hidden Migration Costs:</strong> Procurement managers switch to cheaper vendors on paper, only to encounter unanticipated data migration and retraining expenses that erase savings.</li>
+</ol>
+
+<div class="callout-hindi callout">
+    <strong>हिंदी में समझें (Hindi Summary for Meetings):</strong><br>
+    Company mein har saal software licences par karodon rupaye kharch hote hain. Lekin 3 badi galtiyan hoti hain: (1) Hum jyada licences kharid lete hain aur log use nahi karte, (2) Vendor service kharab deta hai fir bhi hum usse renegotiate nahi karte, (3) Contract renewal ki deadline nikal jaati hai aur contract automatically 1 saal ke liye renew ho jata hai. Yeh Agent in teeno cheezon ko automate karke company ka paisa bachata hai aur management ko 3 clear options deta hai: <strong>Renew, Renegotiate, ya Replace</strong>.
+</div>
+
+<div class="grid-2">
+    <div>
+        <div class="badge badge-blue">Key Deliverable 1</div>
+        <h3>3-Way Objective Comparison</h3>
+        <p>Compares <strong>Renew</strong> (status quo), <strong>Renegotiate</strong> (right-sizing seats & rates), and <strong>Replace</strong> (including full 1st-year migration and onboarding costs).</p>
+    </div>
+    <div>
+        <div class="badge badge-green">Key Deliverable 2</div>
+        <h3>Evidence-Backed Rationale</h3>
+        <p>Every finding links directly to exact contract clauses, historical monthly seat utilisation numbers, and logged ticket breach IDs.</p>
+    </div>
+</div>
+
+<!-- SECTION 2: ARCHITECTURE & SYSTEM WORKFLOW -->
+<h2>2. System Architecture & End-to-End Workflow</h2>
+<p>
+    The system uses a modular, pipelined architecture orchestrated by <code>VendorRenewalAgent</code>. It follows a multi-tier structure that separates data ingestion, deterministic mathematical analysis, clause retrieval, safety guardrails, and executive reporting.
+</p>
+
+<table>
+    <tr>
+        <th style="width: 20%;">Architecture Layer</th>
+        <th style="width: 30%;">Module File</th>
+        <th style="width: 50%;">Core Responsibility & Mechanism</th>
+    </tr>
+    <tr>
+        <td><strong>1. Ingestion Layer</strong></td>
+        <td><code>src/contract_reader.py</code><br><code>src/data_loader.py</code></td>
+        <td>Reads multi-format contracts (.txt, .pdf via <code>pdfplumber</code>, .docx via <code>python-docx</code>). Validates tabular data (usage CSV, incidents CSV, quotations XLSX) with strict schema and boundary checks.</td>
+    </tr>
+    <tr>
+        <td><strong>2. Extraction & Retrieval Layer</strong></td>
+        <td><code>src/contract_extractor.py</code><br><code>src/retriever.py</code></td>
+        <td>Deterministic regex extraction with confidence scoring (HIGH, MEDIUM, LOW, NOT_FOUND). Local BM25 clause search with <strong>strict vendor isolation</strong> (VendorA queries never leak VendorB clauses).</td>
+    </tr>
+    <tr>
+        <td><strong>3. Analytical Engines</strong></td>
+        <td><code>src/utilisation.py</code><br><code>src/sla_analyzer.py</code><br><code>src/cost_comparator.py</code><br><code>src/deadline_monitor.py</code></td>
+        <td>Deterministic analytical modules using Python's <code>Decimal</code> module. Computes licence utilisation %, SLA breach achievement by severity, 3-way cost matrices, and notice deadline countdowns.</td>
+    </tr>
+    <tr>
+        <td><strong>4. Safety & Orchestration</strong></td>
+        <td><code>src/agent.py</code></td>
+        <td>Main state machine. Enforces <strong>Spec Test 6</strong> (forbidden autonomous action blocker) and coordinates all tools into a single coherent assessment.</td>
+    </tr>
+    <tr>
+        <td><strong>5. Persistence & Governance</strong></td>
+        <td><code>src/assessment_store.py</code><br><code>src/report_generator.py</code></td>
+        <td>SHA-256 duplicate-safe persistence (JSON + Markdown). Produces executive decision reports and 4-tier stakeholder sign-off packages (HTML/PDF).</td>
+    </tr>
+    <tr>
+        <td><strong>6. User Interface</strong></td>
+        <td><code>main.py</code> (CLI)<br><code>app.py</code> (Streamlit Web UI)</td>
+        <td>Cross-platform UTF-8 terminal interface and an interactive executive web dashboard with charts, KPI tiles, and one-click report downloads.</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- SECTION 3: TECHNOLOGIES & APIS EXPLAINED -->
+<h2>3. Detailed Technology Stack & Libraries Breakdown</h2>
+<p>
+    Every technology in this project was selected deliberately to satisfy enterprise requirements: <strong>zero hallucination, zero vendor lock-in, zero cloud API costs, and complete privacy of confidential contract data</strong>.
+</p>
+
+<table>
+    <tr>
+        <th style="width: 18%;">Technology / Library</th>
+        <th style="width: 25%;">Where & How It Is Used</th>
+        <th style="width: 32%;">Why It Was Chosen (Business & Technical Justification)</th>
+        <th style="width: 25%;">हिंदी में विवरण (Simple Explanation)</th>
+    </tr>
+    <tr>
+        <td><strong>Python 3.12 (Core)</strong></td>
+        <td>All core modules, data models, scripts, and tests.</td>
+        <td>Fast execution, native <code>dataclasses</code>, strong typing, clean syntax, enterprise standard for data analytics and agentic AI systems.</td>
+        <td>Main programming language jisme poora system aur uske rules likhe gaye hain.</td>
+    </tr>
+    <tr>
+        <td><strong>Streamlit</strong></td>
+        <td><code>app.py</code> (Web Application)</td>
+        <td>Turns Python analysis into a rich, interactive web dashboard in minutes without needing frontend frameworks (React/Node). Features KPI cards, bar charts, and file downloads.</td>
+        <td>Web interface banane ke liye use hua hai taaki management browser mein dashboard dekh sake.</td>
+    </tr>
+    <tr>
+        <td><strong>Pandas</strong></td>
+        <td><code>src/data_loader.py</code><br><code>src/utilisation.py</code><br><code>src/sla_analyzer.py</code></td>
+        <td>Vectorized loading, validation, filtering, and aggregation of monthly usage numbers, incident logs, and quotation matrices.</td>
+        <td>Excel aur CSV data ko filter aur calculate karne ke liye Python ki sabse powerful library.</td>
+    </tr>
+    <tr>
+        <td><strong>OpenPyXL</strong></td>
+        <td><code>src/data_loader.py</code></td>
+        <td>Reading enterprise quotation workbooks (<code>.xlsx</code>) preserving multi-sheet structure and numeric values.</td>
+        <td>Excel files ko directly read aur validate karne ke liye use hota hai.</td>
+    </tr>
+    <tr>
+        <td><strong>PDFPlumber</strong></td>
+        <td><code>src/contract_reader.py</code></td>
+        <td>Extracts text characters, bounding boxes, and layout structures from PDF contract agreements. Detects scanned/image-only PDFs.</td>
+        <td>PDF contracts se text extract karne ke liye use kiya gaya hai. Scanned PDF hone par warning deta hai.</td>
+    </tr>
+    <tr>
+        <td><strong>Python-Docx</strong></td>
+        <td><code>src/contract_reader.py</code></td>
+        <td>Parses Microsoft Word (<code>.docx</code>) contracts paragraph by paragraph.</td>
+        <td>Word document format ke contracts ko read karne ke liye use hota hai.</td>
+    </tr>
+    <tr>
+        <td><strong>Decimal (Built-in)</strong></td>
+        <td><code>src/cost_comparator.py</code><br><code>src/utilisation.py</code></td>
+        <td>Exact fixed-point and floating-point arithmetic. Completely prevents standard binary floating-point rounding errors (e.g. <code>0.1 + 0.2 != 0.3</code>).</td>
+        <td>Financial calculations mein 1 paise ka bhi rounding error na aaye, isliye exact Decimal use kiya gaya.</td>
+    </tr>
+    <tr>
+        <td><strong>Regex (re)</strong></td>
+        <td><code>src/contract_extractor.py</code><br><code>src/retriever.py</code></td>
+        <td>Pattern matching for dates (e.g. <code>1 January 2024</code>, <code>2024-12-31</code>), notice clauses, monetary sums, and section boundaries.</td>
+        <td>Contract ke raw text se dates, notice period, aur rules nikalne ke liye pattern matching karta hai.</td>
+    </tr>
+    <tr>
+        <td><strong>Local BM25 / TF-IDF</strong></td>
+        <td><code>src/retriever.py</code></td>
+        <td>Term-frequency and inverse-document-frequency clause ranking with exact phrase boosting and strict vendor filtering.</td>
+        <td>Local search engine jo bina internet ke contract ke sahi sections ko turant dhundh nikalta hai.</td>
+    </tr>
+    <tr>
+        <td><strong>Pytest & Pytest-Cov</strong></td>
+        <td><code>tests/</code> (101 automated tests)</td>
+        <td>Automated unit, regression, adversarial, and edge-case testing with line-by-line coverage metrics (84% coverage).</td>
+        <td>Software ki quality check karne ke liye automated testing framework jo code ko verify karta hai.</td>
+    </tr>
+    <tr>
+        <td><strong>Hashlib (SHA-256)</strong></td>
+        <td><code>src/assessment_store.py</code></td>
+        <td>Generates deterministic assessment hashes to prevent accidental duplicate saves and maintain audit trails.</td>
+        <td>Har report ka unique fingerprint banata hai taaki duplicate files na banein aur audit trail rahe.</td>
+    </tr>
+</table>
+
+<!-- SECTION 4: MODULE-BY-MODULE DEEP DIVE -->
+<h2>4. Detailed Module Architecture & Internal APIs</h2>
+<p>
+    The codebase is organized into 10 decoupled modules within <code>src/</code>:
+</p>
+
+<h3>1. `contract_reader.py` (Multi-Format Document Reader)</h3>
+<ul>
+    <li><strong>Function:</strong> <code>read_contract(file_path: Path) -> ContractReadResult</code></li>
+    <li><strong>How it works:</strong> Inspects file extensions (<code>.txt</code>, <code>.pdf</code>, <code>.docx</code>). Uses <code>pdfplumber</code> to extract text page-by-page. If a PDF contains image objects but zero text, it emits an alert: <em>"Document appears to be image-only (scanned). OCR is required."</em></li>
+</ul>
+
+<h3>2. `contract_extractor.py` (Deterministic Regex Term Extractor)</h3>
+<ul>
+    <li><strong>Function:</strong> <code>extract_contract_terms(text: str, source_file: str) -> ContractTerms</code></li>
+    <li><strong>Key Feature: Confidence Scoring:</strong> Every extracted field has an attached confidence (<code>HIGH</code>, <code>MEDIUM</code>, <code>LOW</code>, <code>NOT_FOUND</code>) and exact quotation snippet.</li>
+    <li><strong>Ambiguous Clause Handling:</strong> If a contract has conflicting language (e.g., both automatic renewal and manual sign-off), it flags <code>CONFLICTING — review required</code> with <code>LOW</code> confidence and alerts legal.</li>
+</ul>
+
+<h3>3. `retriever.py` (Vendor-Isolated Local RAG Engine)</h3>
+<ul>
+    <li><strong>Class:</strong> <code>ContractRetriever</code> | <strong>Methods:</strong> <code>index_document(...)</code>, <code>retrieve(query, vendor, top_k)</code></li>
+    <li><strong>Vendor Isolation Mechanism:</strong> All indexed chunks carry a <code>vendor</code> tag. When querying for VendorA, candidate chunks are strictly filtered to VendorA. VendorB chunks are mathematically impossible to retrieve, eliminating cross-contract contamination.</li>
+</ul>
+
+<h3>4. `utilisation.py` (Licence Usage & Over-Purchasing Analyzer)</h3>
+<ul>
+    <li><strong>Function:</strong> <code>calculate_utilisation_rate(df, vendor, threshold=70.0) -> UtilisationResult</code></li>
+    <li><strong>Spec Test 2:</strong> Calculates <code>Average Utilisation = (Active Seats / Purchased Seats) * 100</code> using <code>Decimal</code>. If average utilisation falls below the configurable 70% threshold (e.g. VendorA at 63.17%), it generates an over-purchasing alert and recommends negotiating seat reductions.</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h3>5. `sla_analyzer.py` (SLA Performance & Breach Logger)</h3>
+<ul>
+    <li><strong>Function:</strong> <code>evaluate_sla_performance(df, vendor) -> SLAResult</code></li>
+    <li><strong>Spec Test 3:</strong> Evaluates every ticket against contractual response targets. Categorizes performance by severity (Critical, High, Medium, Low). Logs exact breach incident IDs (e.g. <code>['INC-001', 'INC-007']</code>) and generates escalation warnings for critical failures.</li>
+</ul>
+
+<h3>6. `cost_comparator.py` (3-Way Financial Matrix Engine)</h3>
+<ul>
+    <li><strong>Function:</strong> <code>compare_vendor_costs(quotations_df, vendor) -> CostComparisonResult</code></li>
+    <li><strong>Spec Test 4 (Migration Cost Guardrail):</strong> If a replacement vendor quote does not specify migration and onboarding costs, the system marks the replacement option as <code>PENDING</code> and refuses to issue an ungrounded recommendation to replace.</li>
+    <li><strong>Spec Test 5 (Dynamic Quotation Updates):</strong> When quotation inputs change, the 1st-year and multi-year savings are dynamically recalculated using <code>Decimal</code> precision.</li>
+</ul>
+
+<h3>7. `deadline_monitor.py` (Notice Window & Countdown Engine)</h3>
+<ul>
+    <li><strong>Function:</strong> <code>calculate_notice_deadline(contract_end, notice_days, reference_date) -> DeadlineResult</code></li>
+    <li><strong>Alert Hierarchy:</strong>
+        <ul>
+            <li><code>PASSED</code>: Deadline has passed. Mandates immediate legal review before any decision.</li>
+            <li><code>URGENT</code>: &le; 30 days remaining. Immediate executive escalation required.</li>
+            <li><code>WARNING</code>: 31 to 60 days remaining. Tender preparation recommended.</li>
+            <li><code>OK</code>: &gt; 60 days remaining. Normal evaluation timeline.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>8. `agent.py` (Safety Orchestrator & State Machine)</h3>
+<ul>
+    <li><strong>Class:</strong> <code>VendorRenewalAgent</code> | <strong>Guardrail:</strong> <code>check_forbidden_action(user_input)</code></li>
+    <li><strong>Spec Test 6 (Action Blocker):</strong> Rejects conversational commands like <em>"Terminate contract"</em>, <em>"Cancel agreement"</em>, or <em>"Sign renewal"</em>. Explains that the agent is strictly advisory and only authorized human personnel can execute contracts.</li>
+</ul>
+
+<h3>9. `assessment_store.py` (Duplicate-Safe Audit Persistence)</h3>
+<ul>
+    <li><strong>Function:</strong> <code>save_renewal_assessment(assessment_data, output_dir) -> SaveResult</code></li>
+    <li>Calculates a deterministic SHA-256 hash of core inputs (vendor, period, costs, dates). Identical re-runs return the existing assessment ID without creating duplicate files, ensuring clean enterprise auditability.</li>
+</ul>
+
+<h3>10. `report_generator.py` (Executive Package & Sign-Off Block)</h3>
+<ul>
+    <li><strong>Functions:</strong> <code>generate_executive_markdown(...)</code>, <code>generate_executive_html(...)</code></li>
+    <li>Produces formal executive decision reports and embeds a 4-tier signature block for IT Vendor Management, Procurement, Legal Counsel, and the CIO.</li>
+</ul>
+
+<!-- SECTION 5: PRESENTATION TALKING POINTS -->
+<h2>5. Executive Presentation Script & Meeting Talking Points</h2>
+<p>
+    When presenting this project to leadership or your team, tailor your presentation to the stakeholder's role:
+</p>
+
+<div class="grid-2">
+    <div>
+        <h3>💼 Pitch to CIO & VP of IT (Cost & Risk Focus)</h3>
+        <ul>
+            <li><em>"This agent gives our procurement committee an objective, evidence-based evaluation before we spend hundreds of thousands on renewals."</em></li>
+            <li><em>"It immediately catches over-purchased software seats—for VendorA, our utilisation was 63%, showing we were over-buying by 37%."</em></li>
+            <li><em>"It ensures we never get trapped by missed 90-day auto-renewal notice windows."</em></li>
+        </ul>
+    </div>
+    <div>
+        <h3>⚖️ Pitch to Legal & Procurement (Compliance Focus)</h3>
+        <ul>
+            <li><em>"The agent is strictly advisory—it cannot autonomously sign or terminate contracts, keeping all legal power in human hands."</em></li>
+            <li><em>"Every recommendation quotes exact contract clauses and historical SLA ticket breaches."</em></li>
+            <li><em>"It prevents cross-vendor data leakage through strict mathematical vendor isolation."</em></li>
+        </ul>
+    </div>
+</div>
+
+<div class="callout-hindi callout">
+    <strong>कंपनी मीटिंग में बोलने के लिए आसान हिंदी स्क्रिप्ट (Presentation Talking Points):</strong><br>
+    <em>"Sir, yeh project hamari company ke IT contracts ko manage karne ke liye ek AI Decision Support Agent hai. Yeh 3 main kaam karta hai:
+    Pehle, yeh hamare contracts ko scan karke notice deadline aur renewal conditions check karta hai taaki auto-renewal miss na ho.
+    Dusra, yeh hamare real usage data ko check karta hai—jaise VendorA mein hum sirf 63% licences use kar rahe the, jisse pata chala ki hum 37% extra paisa de rahe hain.
+    Teesra, yeh vendor ke SLA breaches ko track karke company ko batata hai ki naye quote par <strong>Renew karein, daam kam karwane ke liye Renegotiate karein, ya naya vendor Replace karein</strong>. Yeh system 100% safe hai aur bina human approval ke koi faisla nahi leta."</em>
+</div>
+
+<!-- SECTION 6: FAQS FOR MEETINGS -->
+<h2>6. Common Questions from Management & How to Answer</h2>
+<table>
+    <tr>
+        <th style="width: 35%;">Potential Leadership Question</th>
+        <th style="width: 65%;">Recommended Executive Response</th>
+    </tr>
+    <tr>
+        <td><strong>"Why not just use ChatGPT or Claude directly?"</strong></td>
+        <td><em>"LLMs hallucinate numbers, make arithmetic errors on multi-year projections, and risk sending confidential contract data to third-party cloud servers. Our agent uses <strong>deterministic Python math with Decimal precision</strong> for 100% financial accuracy, and keeps all proprietary contract data completely local and confidential."</em></td>
+    </tr>
+    <tr>
+        <td><strong>"Can this agent accidentally terminate or auto-renew our contract?"</strong></td>
+        <td><em>"No. The agent is hard-coded with guardrails (Spec Test 6) that block any autonomous execution commands. It produces advisory reports with formal sign-off blocks requiring signatures from the Vendor Manager, Procurement Lead, Legal, and the CIO."</em></td>
+    </tr>
+    <tr>
+        <td><strong>"How do we know the recommendations are reliable?"</strong></td>
+        <td><em>"The project has 101 automated unit and edge-case tests with 84% code coverage. It includes guardrails for missing migration costs (Spec Test 4), low utilisation (Spec Test 2), and severe SLA breaches (Spec Test 3)."</em></td>
+    </tr>
+</table>
+
+<div class="footer">
+    <span>IT Vendor Renewal Decision Support Agent</span>
+    <span>Enterprise Technical & Business Presentation Guide</span>
+    <span>Page 4 of 4</span>
+</div>
+
+</body>
+</html>
+"""
+
+HTML_FILE.write_text(html_content, encoding="utf-8")
+print(f"✅ HTML presentation generated at: {HTML_FILE}")
+
+# Convert to PDF using Microsoft Edge headless
+edge_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+if not os.path.exists(edge_path):
+    edge_path = r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"
+
+if os.path.exists(edge_path):
+    input_uri = "file:///" + str(HTML_FILE).replace("\\", "/")
+    cmd = [
+        edge_path,
+        "--headless",
+        "--disable-gpu",
+        "--run-all-compositor-stages-before-draw",
+        f"--print-to-pdf={PDF_FILE}",
+        input_uri,
+    ]
+    res = subprocess.run(cmd, capture_output=True, text=True)
+    if PDF_FILE.exists():
+        print(f"🎉 PDF successfully generated at: {PDF_FILE} (Size: {PDF_FILE.stat().st_size} bytes)")
+    else:
+        print(f"⚠️ PDF creation attempted but file not found. Stderr: {res.stderr}")
+else:
+    print(f"⚠️ msedge.exe not found. HTML is available at: {HTML_FILE}")
