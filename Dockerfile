@@ -24,8 +24,5 @@ COPY . .
 # Expose Streamlit default port
 EXPOSE 8501
 
-# Healthcheck
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health || exit 1
-
-# Launch Streamlit
-ENTRYPOINT ["python", "-m", "streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Launch Streamlit with dynamic PORT support for cloud platforms (Render, Heroku, etc.)
+CMD ["sh", "-c", "python -m streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0"]
