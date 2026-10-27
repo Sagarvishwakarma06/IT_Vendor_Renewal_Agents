@@ -1,4 +1,4 @@
-﻿# Python
+# Python
 __pycache__/
 *.py[cod]
 *.pyo
@@ -26,6 +26,10 @@ coverage.xml
 # Outputs (optional — remove if you want to track sample outputs)
 outputs/*.json
 outputs/*.md
+
+# Temp data & generated local presentation
+data/temp/
+IT_Vendor_Renewal_Agent_Company_Presentation.pdf
 
 # IDE
 .vscode/settings.json

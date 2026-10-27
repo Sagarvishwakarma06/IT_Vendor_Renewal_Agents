@@ -7,14 +7,8 @@ Uses Microsoft Edge headless print-to-pdf for zero-dependency vector PDF output.
 """
 
 import os
-import sys
 import subprocess
 from pathlib import Path
-
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-if hasattr(sys.stderr, "reconfigure"):
-    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 BASE_DIR = Path(__file__).parent.resolve()
 OUTPUT_DIR = BASE_DIR / "outputs"
