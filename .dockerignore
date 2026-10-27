@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+.pytest_cache/
+.coverage
+htmlcov/
+data/temp/
+IT_Vendor_Renewal_Agent_Company_Presentation.pdf
