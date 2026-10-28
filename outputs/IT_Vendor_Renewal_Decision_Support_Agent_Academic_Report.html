@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Academic Project Report - IT Vendor Renewal Decision Support Agent</title>
+<style>
+    @page {
+        size: A4 portrait;
+        margin: 22mm 18mm 22mm 18mm;
+        @bottom-right {
+            content: counter(page);
+            font-size: 9pt;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #64748b;
+        }
+        @bottom-left {
+            content: "IT Vendor Renewal Decision Support Agent — Academic Project Report";
+            font-size: 8pt;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #94a3b8;
+        }
+    }
+
+    body {
+        font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #1e293b;
+        background-color: #ffffff;
+        line-height: 1.6;
+        font-size: 10pt;
+    }
+
+    /* Page Breaks */
+    .page-break {
+        page-break-before: always;
+    }
+
+    .no-break {
+        page-break-inside: avoid;
+    }
+
+    /* Typography */
+    h1.report-title {
+        font-size: 24pt;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1.25;
+        margin-top: 25px;
+        margin-bottom: 12px;
+        letter-spacing: -0.5px;
+    }
+
+    h2.report-subtitle {
+        font-size: 13pt;
+        font-weight: 500;
+        color: #475569;
+        margin-top: 0;
+        margin-bottom: 35px;
+        line-height: 1.4;
+    }
+
+    h1.chapter-title {
+        font-size: 15pt;
+        font-weight: 700;
+        color: #0f172a;
+        border-bottom: 2px solid #2563eb;
+        padding-bottom: 6px;
+        margin-top: 26px;
+        margin-bottom: 14px;
+        page-break-after: avoid;
+    }
+
+    h2.section-title {
+        font-size: 11.5pt;
+        font-weight: 600;
+        color: #1e40af;
+        margin-top: 18px;
+        margin-bottom: 8px;
+        page-break-after: avoid;
+    }
+
+    h3.sub-section-title {
+        font-size: 10.5pt;
+        font-weight: 600;
+        color: #334155;
+        margin-top: 12px;
+        margin-bottom: 6px;
+        page-break-after: avoid;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 10px;
+        text-align: justify;
+    }
+
+    ul, ol {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding-left: 22px;
+    }
+
+    li {
+        margin-bottom: 4px;
+    }
+
+    /* Cover Page */
+    .cover-container {
+        text-align: center;
+        padding-top: 40px;
+        padding-bottom: 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .cover-badge {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: #eff6ff;
+        color: #1d4ed8;
+        border: 1px solid #bfdbfe;
+        border-radius: 20px;
+        font-size: 9pt;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .cover-meta-table {
+        margin: 45px auto 35px auto;
+        width: 88%;
+        border-collapse: collapse;
+        font-size: 10pt;
+    }
+
+    .cover-meta-table td {
+        padding: 8px 12px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .cover-meta-table td.label {
+        font-weight: 600;
+        color: #475569;
+        width: 38%;
+        text-align: right;
+    }
+
+    .cover-meta-table td.value {
+        color: #0f172a;
+        text-align: left;
+    }
+
+    .placeholder-text {
+        color: #b91c1c;
+        background-color: #fef2f2;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-family: Consolas, monospace;
+        font-size: 9.5pt;
+        border: 1px dashed #f87171;
+    }
+
+    /* Tables */
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        margin-bottom: 16px;
+        font-size: 9pt;
+    }
+
+    table.data-table th {
+        background-color: #f1f5f9;
+        color: #0f172a;
+        font-weight: 600;
+        text-align: left;
+        padding: 7px 10px;
+        border: 1px solid #cbd5e1;
+    }
+
+    table.data-table td {
+        padding: 6px 10px;
+        border: 1px solid #e2e8f0;
+        vertical-align: top;
+    }
+
+    table.data-table tr:nth-child(even) {
+        background-color: #f8fafc;
+    }
+
+    /* Callout & Note Boxes */
+    .callout {
+        padding: 10px 14px;
+        border-radius: 6px;
+        margin: 12px 0;
+        font-size: 9.5pt;
+    }
+
+    .callout-info {
+        background-color: #eff6ff;
+        border-left: 4px solid #3b82f6;
+        color: #1e3a8a;
+    }
+
+    .callout-warning {
+        background-color: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        color: #78350f;
+    }
+
+    .callout-danger {
+        background-color: #fef2f2;
+        border-left: 4px solid #ef4444;
+        color: #991b1b;
+    }
+
+    .callout-success {
+        background-color: #f0fdf4;
+        border-left: 4px solid #22c55e;
+        color: #14532d;
+    }
+
+    /* Code & Architecture Blocks */
+    pre.code-block {
+        background-color: #0f172a;
+        color: #f8fafc;
+        padding: 12px 14px;
+        border-radius: 6px;
+        font-family: Consolas, "Courier New", Courier, monospace;
+        font-size: 8pt;
+        line-height: 1.45;
+        overflow-x: auto;
+        margin: 10px 0 14px 0;
+    }
+
+    code.inline-code {
+        background-color: #f1f5f9;
+        color: #0f172a;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: Consolas, monospace;
+        font-size: 9pt;
+    }
+
+    /* Signature & Certificate Lines */
+    .sign-box-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
+
+    .sign-box {
+        width: 45%;
+        text-align: center;
+        border-top: 1px solid #475569;
+        padding-top: 8px;
+        font-size: 9.5pt;
+    }
+
+    .toc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 9.5pt;
+    }
+
+    .toc-table td {
+        padding: 6px 4px;
+        border-bottom: 1px dotted #cbd5e1;
+    }
+
+    .toc-table td.toc-page {
+        text-align: right;
+        font-weight: 600;
+        color: #2563eb;
+        width: 45px;
+    }
+
+    .toc-table tr.toc-chapter td {
+        font-weight: 700;
+        color: #0f172a;
+        padding-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<!-- ========================================================================= -->
+<!-- 1. TITLE PAGE -->
+<!-- ========================================================================= -->
+<div class="cover-container">
+    <div>
+        <div class="cover-badge">Academic Capstone / Degree Project Report</div>
+        <h1 class="report-title">IT Vendor Renewal Decision Support Agent</h1>
+        <h2 class="report-subtitle">An Evidence-Based Decision Support System for IT Software Contract Renewals, Licence Utilisation, SLA Compliance, and Cost Governance</h2>
+    </div>
+
+    <div>
+        <table class="cover-meta-table">
+            <tr>
+                <td class="label">Candidate Name:</td>
+                <td class="value"><span class="placeholder-text">[Student Name: Sagar Vishwakarma]</span></td>
+            </tr>
+            <tr>
+                <td class="label">Student / Roll ID:</td>
+                <td class="value"><span class="placeholder-text">[Student ID / Enrollment Number]</span></td>
+            </tr>
+            <tr>
+                <td class="label">Degree / Course:</td>
+                <td class="value"><span class="placeholder-text">[Degree / Course Name, e.g., B.Tech in Computer Science / MCA / B.Sc. IT]</span></td>
+            </tr>
+            <tr>
+                <td class="label">Academic Department:</td>
+                <td class="value"><span class="placeholder-text">[Department of Computer Science and Engineering]</span></td>
+            </tr>
+            <tr>
+                <td class="label">Institution / University:</td>
+                <td class="value"><span class="placeholder-text">[Institution / University Name, City, State]</span></td>
+            </tr>
+            <tr>
+                <td class="label">Project Supervisor / Guide:</td>
+                <td class="value"><span class="placeholder-text">[Supervisor / Faculty Guide Name, Designation]</span></td>
+            </tr>
+            <tr>
+                <td class="label">Submission Date:</td>
+                <td class="value"><span class="placeholder-text">[Submission Date: October 2026]</span></td>
+            </tr>
+            <tr>
+                <td class="label">Project Operational Mode:</td>
+                <td class="value"><strong>Strictly Advisory (Human-in-the-Loop Governance)</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="font-size: 8.5pt; color: #64748b; margin-top: 20px;">
+        Submitted in partial fulfilment of the academic requirements for the award of the designated degree.
+    </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- 2. CERTIFICATE AND DECLARATION -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Certificate of Approval</h1>
+
+<p>
+This is to certify that the project entitled <strong>"IT Vendor Renewal Decision Support Agent"</strong> submitted by 
+<span class="placeholder-text">[Student Name]</span> (<span class="placeholder-text">[Student ID / Enrollment Number]</span>) 
+in partial fulfilment of the requirements for the degree of <span class="placeholder-text">[Course / Degree Name]</span> 
+at <span class="placeholder-text">[Institution / University Name]</span> is an authentic record of bonafide work carried out 
+under my supervision and guidance during the academic session <span class="placeholder-text">[Academic Year, e.g., 2025–2026]</span>.
+</p>
+
+<p>
+The project implements an automated, deterministic advisory system for evaluating IT software vendor contracts, licence allocation, 
+service level agreements (SLAs), and renewal quotation costs without autonomously modifying or executing contractual agreements. 
+The matter presented in this report has not been submitted elsewhere for the award of any other degree or diploma.
+</p>
+
+<div class="sign-box-container" style="margin-top: 70px;">
+    <div class="sign-box">
+        <strong><span class="placeholder-text">[Supervisor / Guide Name]</span></strong><br>
+        Internal Project Guide<br>
+        Department of <span class="placeholder-text">[Department Name]</span><br>
+        <span class="placeholder-text">[Institution Name]</span>
+    </div>
+    <div class="sign-box">
+        <strong><span class="placeholder-text">[Head of Department Name]</span></strong><br>
+        Head of Department<br>
+        Department of <span class="placeholder-text">[Department Name]</span><br>
+        <span class="placeholder-text">[Institution Name]</span>
+    </div>
+</div>
+
+<div class="sign-box-container" style="margin-top: 50px;">
+    <div class="sign-box">
+        <strong>Internal Examiner</strong><br>
+        Date: <span class="placeholder-text">[DD/MM/YYYY]</span>
+    </div>
+    <div class="sign-box">
+        <strong>External Examiner</strong><br>
+        Date: <span class="placeholder-text">[DD/MM/YYYY]</span>
+    </div>
+</div>
+
+<hr style="margin-top: 40px; border: 0; border-top: 1px solid #cbd5e1;">
+
+<h1 class="chapter-title" style="margin-top: 30px;">Candidate Declaration</h1>
+
+<p>
+I, <span class="placeholder-text">[Student Name]</span>, student of <span class="placeholder-text">[Course / Degree Name]</span>, 
+bearing Enrollment Number <span class="placeholder-text">[Student ID]</span>, hereby declare that the project report entitled 
+<strong>“IT Vendor Renewal Decision Support Agent”</strong> is an original and authentic piece of software engineering and research work 
+carried out by me under the supervision of <span class="placeholder-text">[Supervisor Name]</span>.
+</p>
+
+<p>
+I solemnly affirm that:
+</p>
+<ol>
+    <li>All system architectures, analytical algorithms, data processing workflows, and verification test suites detailed herein were constructed and tested as described.</li>
+    <li>Where existing libraries, parsing utilities, or reference frameworks have been utilized, they have been explicitly acknowledged and cited.</li>
+    <li>The software has been intentionally architected as an <strong>advisory-only decision support tool</strong>, explicitly disallowing automated contract execution, termination, signing, or unilateral price modification.</li>
+    <li>This report has not been previously submitted in part or full to any university, examination board, or institution for the conferral of any academic degree, diploma, or certificate.</li>
+</ol>
+
+<div class="sign-box-container" style="margin-top: 50px;">
+    <div class="sign-box" style="width: 50%; margin-left: auto;">
+        <strong><span class="placeholder-text">[Signature of the Student]</span></strong><br>
+        <strong><span class="placeholder-text">[Student Name]</span></strong><br>
+        Student Roll Number: <span class="placeholder-text">[Student ID]</span><br>
+        Date: <span class="placeholder-text">[Submission Date]</span>
+    </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- 3. ACKNOWLEDGEMENTS -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Acknowledgements</h1>
+
+<p>
+The successful conceptualisation, architectural design, implementation, and rigorous verification of the 
+<strong>IT Vendor Renewal Decision Support Agent</strong> has been a profoundly enriching academic journey, made possible 
+through the guidance, encouragement, and technical assistance of numerous individuals and institutional mentors.
+</p>
+
+<p>
+First and foremost, I express my deepest gratitude to my esteemed project supervisor, 
+<strong><span class="placeholder-text">[Supervisor / Guide Name]</span></strong>, 
+<span class="placeholder-text">[Supervisor Designation]</span>, Department of <span class="placeholder-text">[Department Name]</span>, 
+for invaluable guidance, patience, and insightful critiques throughout the project lifecycle. Their insistence on deterministic financial accuracy, 
+rigorous edge-case verification, and ethical governance standards profoundly shaped the system’s architecture.
+</p>
+
+<p>
+I extend my sincere appreciation to <strong><span class="placeholder-text">[Head of Department Name]</span></strong>, Head of the Department, 
+and the distinguished faculty members of <span class="placeholder-text">[Institution Name]</span> for fostering a stimulating academic environment 
+and providing state-of-the-art laboratory and computational infrastructure necessary for conducting this work.
+</p>
+
+<p>
+I also thank my peers, project reviewers, and academic colleagues whose constructive technical discussions, peer code reviews, 
+and practical procurement scenarios assisted in refining the multi-vendor isolation model, regular expression extractors, 
+and the Streamlit interactive dashboard.
+</p>
+
+<p>
+Lastly, I convey my heartfelt thanks to my parents and family members for their constant moral encouragement, sacrifices, and unconditional 
+support throughout my academic endeavours.
+</p>
+
+<div style="margin-top: 30px; text-align: right;">
+    <strong><span class="placeholder-text">[Student Name]</span></strong><br>
+    <span class="placeholder-text">[Degree / Branch]</span><br>
+    <span class="placeholder-text">[Institution / University Name]</span>
+</div>
+
+<!-- ========================================================================= -->
+<!-- 4. ABSTRACT -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Abstract</h1>
+
+<div class="callout callout-info" style="font-size: 10pt; line-height: 1.65;">
+    <strong>Executive Summary:</strong> Modern enterprise IT organisations face mounting software expenditure, contractual compliance complexities, 
+    and operational inefficiencies during annual software vendor renewals. Manual contract analysis is labour-intensive and frequently suffers from 
+    four systemic vulnerabilities: unmonitored licence shelfware, unrecovered service level agreement (SLA) penalty credits, missed notice deadlines 
+    triggering inadvertent auto-renewals, and understated migration costs during vendor replacement appraisals.
+</div>
+
+<p>
+To address these industrial challenges, this project presents the <strong>IT Vendor Renewal Decision Support Agent</strong>, an automated, 
+deterministic, evidence-based decision support system built to assist IT, Procurement, Legal, and Finance leadership in conducting rigorous, 
+multi-dimensional renewal evaluations. The system accepts contract documents across multiple formats (PDF, DOCX, and TXT), licence usage logs (CSV, Excel), 
+historical SLA incident records, and structured vendor quotations. It coordinates specialized analytical engines to extract contractual terms via 
+pattern recognition, evaluate seat-level licence utilisation against configurable thresholds, compute SLA downtime credits using fixed financial rules, 
+monitor renewal notice deadlines with multi-stage urgency warnings, and perform multi-option total-cost-of-ownership (TCO) comparisons across three standard 
+renewal pathways: <strong>Renew</strong>, <strong>Renegotiate</strong>, and <strong>Replace</strong>.
+</p>
+
+<p>
+Crucially, the system enforces a strict <strong>advisory-only boundary</strong>. All financial arithmetic is computed using exact decimal arithmetic 
+(via Python’s <code>decimal.Decimal</code>) to prevent IEEE-754 floating-point inaccuracies. Cross-vendor information leakage is strictly prevented 
+by isolating document clause indexing via vendor-specific BM25 search spaces. Built entirely on local deterministic algorithms without dependence on 
+external large language model (LLM) APIs, the system completely eliminates generative hallucination risks while guaranteeing total corporate confidentiality. 
+The system was verified against a comprehensive automated test suite consisting of <strong>101 automated test cases achieving an 84% code coverage rate</strong>, 
+including formal specification tests covering unpriced migration blocks, severe SLA penalty calculations, missing contract error handling, and 
+deterministic rejection of unauthorized contractual action commands. The final assessment artifact is immutably hashed using SHA-256 and presented 
+via both an interactive Streamlit web dashboard and standalone executive audit reports.
+</p>
+
+<p>
+<strong>Keywords:</strong> Decision Support Systems (DSS), IT Procurement, Software Contract Renewal, Service Level Agreements (SLA), 
+Licence Utilisation, Total Cost of Ownership (TCO), Deterministic Financial Computing, Safe Advisory Governance.
+</p>
+
+<!-- ========================================================================= -->
+<!-- 5. TABLE OF CONTENTS -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Table of Contents</h1>
+
+<table class="toc-table">
+    <tr class="toc-chapter">
+        <td>Certificate of Approval & Candidate Declaration</td>
+        <td class="toc-page">ii</td>
+    </tr>
+    <tr class="toc-chapter">
+        <td>Acknowledgements</td>
+        <td class="toc-page">iii</td>
+    </tr>
+    <tr class="toc-chapter">
+        <td>Abstract</td>
+        <td class="toc-page">iv</td>
+    </tr>
+    <tr class="toc-chapter">
+        <td>1. Introduction</td>
+        <td class="toc-page">1</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;1.1 Background and Domain Context</td><td class="toc-page">1</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;1.2 Project Motivation</td><td class="toc-page">1</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;1.3 Problem Statement</td><td class="toc-page">2</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;1.4 Project Objectives</td><td class="toc-page">2</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;1.5 Scope of the Project</td><td class="toc-page">3</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;1.6 Limitations and Operational Boundaries</td><td class="toc-page">3</td></tr>
+
+    <tr class="toc-chapter">
+        <td>2. Existing Process and Proposed Solution</td>
+        <td class="toc-page">4</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;2.1 Current Industrial Renewal Workflows</td><td class="toc-page">4</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;2.2 Common Enterprise Renewal Pitfalls</td><td class="toc-page">4</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;2.3 Proposed Decision Support Solution</td><td class="toc-page">5</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;2.4 Comparative Analysis: Manual vs. Automated Decision Support</td><td class="toc-page">5</td></tr>
+
+    <tr class="toc-chapter">
+        <td>3. Requirements Analysis</td>
+        <td class="toc-page">6</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;3.1 Functional Requirements (FR-01 to FR-09)</td><td class="toc-page">6</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;3.2 Non-Functional Requirements (NFR-01 to NFR-05)</td><td class="toc-page">7</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;3.3 Supported Data Inputs and File Formats</td><td class="toc-page">7</td></tr>
+
+    <tr class="toc-chapter">
+        <td>4. System Design and Architecture</td>
+        <td class="toc-page">8</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.1 High-Level Architecture Overview</td><td class="toc-page">8</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.2 Modular Decomposition and Component Responsibilities</td><td class="toc-page">9</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;4.3 Data Flow and Processing Pipeline</td><td class="toc-page">11</td></tr>
+
+    <tr class="toc-chapter">
+        <td>5. Technology Stack</td>
+        <td class="toc-page">12</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;5.1 Core Programming Language & Runtimes (Python 3.12)</td><td class="toc-page">12</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;5.2 User Interface Framework (Streamlit)</td><td class="toc-page">12</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;5.3 Data Processing and Numerical Libraries (Pandas, OpenPyXL)</td><td class="toc-page">12</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;5.4 Document Ingestion Libraries (PDFPlumber, python-docx)</td><td class="toc-page">13</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;5.5 Mathematical Precision via Decimal Arithmetic</td><td class="toc-page">13</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;5.6 Information Retrieval & Integrity (BM25, SHA-256)</td><td class="toc-page">13</td></tr>
+
+    <tr class="toc-chapter">
+        <td>6. Methodology and Implementation</td>
+        <td class="toc-page">14</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;6.1 Contract Reading and Term Extraction Logic</td><td class="toc-page">14</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;6.2 Handling Ambiguity and Low-Confidence Extractions</td><td class="toc-page">14</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;6.3 Verification of Pure Local Execution (Zero-LLM Design)</td><td class="toc-page">15</td></tr>
+
+    <tr class="toc-chapter">
+        <td>7. Key Features and Decision Outputs</td>
+        <td class="toc-page">16</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;7.1 Decision Recommendation Pathways (Renew, Renegotiate, Replace)</td><td class="toc-page">16</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;7.2 Evidence-Based Traceability & Citation Model</td><td class="toc-page">16</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;7.3 Deterministic Rule Thresholds Matrix</td><td class="toc-page">17</td></tr>
+
+    <tr class="toc-chapter">
+        <td>8. Testing, Verification, and Reported Results</td>
+        <td class="toc-page">18</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;8.1 Automated Testing Methodology</td><td class="toc-page">18</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;8.2 Reported Test Metrics (101 Unit Tests, 84% Coverage)</td><td class="toc-page">18</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;8.3 Formal Specification Test Cases</td><td class="toc-page">19</td></tr>
+
+    <tr class="toc-chapter">
+        <td>9. Security, Privacy, and Ethical Considerations</td>
+        <td class="toc-page">20</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;9.1 Commercial Confidentiality and Data Sovereignty</td><td class="toc-page">20</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;9.2 Multi-Vendor Search Isolation Guardrails</td><td class="toc-page">20</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;9.3 Ethical Governance: Advisory Boundary vs Autonomous Action</td><td class="toc-page">21</td></tr>
+
+    <tr class="toc-chapter">
+        <td>10. Limitations and Future Enhancements</td>
+        <td class="toc-page">22</td>
+    </tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;10.1 Current System Limitations</td><td class="toc-page">22</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;10.2 Proposed Future Enhancements</td><td class="toc-page">22</td></tr>
+
+    <tr class="toc-chapter">
+        <td>11. Conclusion</td>
+        <td class="toc-page">23</td>
+    </tr>
+    <tr class="toc-chapter">
+        <td>12. References</td>
+        <td class="toc-page">24</td>
+    </tr>
+    <tr class="toc-chapter">
+        <td>13. Appendices</td>
+        <td class="toc-page">25</td>
+    </tr>
+</table>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 1: INTRODUCTION -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 1: Introduction</h1>
+
+<h2 class="section-title">1.1 Background and Domain Context</h2>
+<p>
+Modern enterprise architectures rely heavily on commercial-off-the-shelf (COTS) and Software-as-a-Service (SaaS) platforms to power 
+mission-critical business workflows. From enterprise resource planning (ERP) and customer relationship management (CRM) systems 
+to cloud infrastructure, communication suites, and cybersecurity tooling, organizations frequently maintain dozens, if not hundreds, 
+of distinct commercial software contracts simultaneously.
+</p>
+<p>
+Each software relationship is governed by a legally binding master services agreement (MSA), service level agreement (SLA), 
+and commercial quotation schedule. These contracts establish specific operational parameters, including committed uptimes, 
+financial service credit remedies for downtime, mandatory renewal notice notification windows, auto-renewal triggers, 
+and tiered pricing structures. Despite the immense capital allocated to these agreements—often representing 20% to 35% of an 
+organization's annual operational IT budget—the administrative management of renewals remains overwhelmingly manual, 
+decentralized, and reactive across modern corporate enterprises.
+</p>
+
+<h2 class="section-title">1.2 Project Motivation</h2>
+<p>
+In standard enterprise procurement lifecycles, vendor contracts are negotiated, signed, and then filed in disparate repositories or 
+shared file drives. As the expiration date approaches, procurement officers and IT managers are tasked with answering several high-stakes questions:
+</p>
+<ul>
+    <li>Are our employees actively utilizing the licences we procured, or are we paying annual maintenance on dormant "shelfware"?</li>
+    <li>Did the vendor satisfy their contractual availability commitments, and are we legally entitled to claw back uncollected SLA penalty credits?</li>
+    <li>What is the hard legal deadline by which we must submit formal written notice of non-renewal to avoid a punitive automatic one-year extension?</li>
+    <li>If an alternative vendor offers an apparently cheaper annual subscription, does the hidden overhead of data migration, staff retraining, and integration make replacement uneconomical?</li>
+</ul>
+<p>
+Answering these questions manually requires cross-referencing multi-page legal documents against telemetry usage spreadsheets, 
+incident ticket logs, and vendor proposal quotes. Due to severe time constraints, procurement teams frequently default to renewing agreements 
+"as-is," resulting in substantial wasted capital, continuous SLA breaches without accountability, and lost negotiating leverage.
+</p>
+
+<h2 class="section-title">1.3 Problem Statement</h2>
+<p>
+Manual enterprise IT software vendor renewal reviews are time-consuming, fragmented, and vulnerable to human error. Organizations lack 
+an integrated, deterministic analytical tool that can concurrently ingest unstructured legal contracts, parse telemetry logs, 
+compute exact SLA financial credits, flag looming notice deadlines, and rigorously evaluate total-cost-of-ownership (TCO) comparisons. 
+Furthermore, existing commercial contract intelligence tools often rely on opaque, non-deterministic cloud AI APIs that risk exposing 
+confidential pricing terms to external servers and introduce generative hallucinations into legal interpretations.
+</p>
+
+<h2 class="section-title">1.4 Project Objectives</h2>
+<p>
+The core objective of this project is to research, design, develop, and thoroughly verify an offline, deterministic decision support system—the 
+<strong>IT Vendor Renewal Decision Support Agent</strong>. Specific sub-objectives include:
+</p>
+<ol>
+    <li><strong>Multi-Format Document Parsing:</strong> Ingest vendor legal contracts across PDF, Word (DOCX), and Plain Text (TXT) formats without relying on external cloud conversion services.</li>
+    <li><strong>Pattern-Based Term Extraction:</strong> Extract key contract metadata (effective date, renewal date, notice period, SLA target, credit percentage, seat count) and assign confidence indicators without black-box language models.</li>
+    <li><strong>Isolated Contract Search:</strong> Provide keyword and BM25 clause retrieval strictly bounded to the selected vendor to eliminate cross-vendor confidential data leakage.</li>
+    <li><strong>Seat-Level Utilisation Analytics:</strong> Compute active vs. allocated seat percentages from CSV/Excel usage logs and flag underutilised subscriptions relative to configurable thresholds.</li>
+    <li><strong>Deterministic SLA Credit Computation:</strong> Correlate contractual SLA targets against incident logs to calculate valid downtime penalties and monetary service credit clawbacks using exact decimal arithmetic.</li>
+    <li><strong>Deadline Monitoring & Alerting:</strong> Calculate critical notice deadlines and classify renewal urgency into tiered operational alerts (CRITICAL, WARNING, OK).</li>
+    <li><strong>Comparative TCO Financial Analysis:</strong> Model three standardized decision options (Renew, Renegotiate, Replace), with mandatory safeguards against unpriced replacement migration costs.</li>
+    <li><strong>Advisory-Only Governance:</strong> Implement deterministic safety filters that reject any user command requesting automated contract execution, cancellation, or termination.</li>
+</ol>
+
+<h2 class="section-title">1.5 Scope of the Project</h2>
+<p>
+The system is scoped as a corporate decision support system (DSS) designed for desktop or on-premises intranet deployment. 
+It supports procurement managers, IT directors, legal counsel, and financial analysts by delivering structured analytical dashboards, 
+traceable evidence references, and exportable executive markdown/HTML reports.
+</p>
+
+<h2 class="section-title">1.6 Limitations and Operational Boundaries</h2>
+<p>
+The project operates under explicit architectural boundaries:
+</p>
+<ul>
+    <li><strong>Advisory Role:</strong> The software acts purely as an analytical assistant. It provides recommendations with supporting evidence, but <em>cannot and will not</em> sign, renew, modify, or terminate contracts.</li>
+    <li><strong>Scanned Document OCR:</strong> The system relies on native text layer extraction (via PDFPlumber). Scanned, image-only contracts generate explicit warning flags indicating that manual OCR or digital text conversion is required.</li>
+    <li><strong>Static Rule Extraction:</strong> Contract terms are extracted using curated regular expression patterns. Highly non-standard legal wording that deviates significantly from standard terminology will receive a "LOW" or "NOT_FOUND" confidence score, deliberately prompting human legal review rather than guessing.</li>
+</ul>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 2: EXISTING PROCESS AND PROPOSED SOLUTION -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 2: Existing Process and Proposed Solution</h1>
+
+<h2 class="section-title">2.1 Current Industrial Renewal Workflows</h2>
+<p>
+In the absence of dedicated automation, corporate software renewals typically follow a frantic, multi-week manual cycle:
+</p>
+<ol>
+    <li>An enterprise renewal alert is triggered—often only 15 to 30 days prior to contract expiration—when an account executive sends an updated invoice or quotation.</li>
+    <li>A procurement officer attempts to locate the original master contract across local folder shares, email archives, or physical filing cabinets.</li>
+    <li>An IT systems administrator is contacted via email to manually pull active user counts from identity providers (e.g., Active Directory, Okta, or CSV exports).</li>
+    <li>If service quality was substandard, service desk logs must be manually filtered to calculate total annual downtime hours and check whether SLA credit claims are still contractually permissible.</li>
+    <li>Alternative vendor pricing is solicited, but procurement teams frequently compare only the headline subscription costs, omitting the substantial professional services, data export, and parallel operating costs required for migration.</li>
+</ol>
+
+<h2 class="section-title">2.2 Common Enterprise Renewal Pitfalls</h2>
+<p>
+This manual approach exposes organizations to four systemic financial and legal risks:
+</p>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 25%;">Pitfall Category</th>
+            <th style="width: 40%;">Operational Reality & Impact</th>
+            <th style="width: 35%;">Direct Financial Consequence</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Unmonitored Shelfware (Low Utilisation)</strong></td>
+            <td>Organizations purchase software bundles for all employees, but departmental churn or role changes result in licences sitting idle. Procurement renews the full seat count due to lack of visibility.</td>
+            <td>Paying 100% maintenance on 60%–70% active usage; wasting tens of thousands of dollars annually on inactive seats.</td>
+        </tr>
+        <tr>
+            <td><strong>Unrecovered SLA Penalty Credits</strong></td>
+            <td>Vendors commit to 99.9% availability with contractual remedies (e.g., 5%–10% invoice credits per breach). Because claiming credits requires manual documentation within 30 days, credits are rarely claimed.</td>
+            <td>Forfeiture of legitimate financial compensation; subsidising poor vendor infrastructure reliability.</td>
+        </tr>
+        <tr>
+            <td><strong>Missed Notice Windows & Auto-Renewal</strong></td>
+            <td>Enterprise contracts frequently mandate 30, 60, or 90 days advance written notice to terminate. Procurement teams unaware of the notice date miss the deadline by days.</td>
+            <td>Automatic legally binding one-year contract extension at standard or increased rack rates without negotiating leverage.</td>
+        </tr>
+        <tr>
+            <td><strong>Unaccounted Migration Overheads</strong></td>
+            <td>Alternative vendors present attractive annual licence quotes. Procurement selects "Replace" without factoring in data migration, API rebuilds, and staff retraining expenses.</td>
+            <td>Severe budget overruns; first-year total cost of replacement significantly exceeds the cost of staying with the incumbent.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">2.3 Proposed Decision Support Solution</h2>
+<p>
+The <strong>IT Vendor Renewal Decision Support Agent</strong> replaces this disorganized, error-prone manual procedure with a consolidated, 
+deterministic computational pipeline. By ingesting all four core data sources—contract documents, telemetry logs, SLA incident histories, and vendor quotations—the 
+system performs concurrent automated analyses:
+</p>
+<ul>
+    <li>Extracts and displays contract terms alongside extraction confidence scores and exact text evidence snippets.</li>
+    <li>Calculates exact seat-level utilisation percentages, instantly identifying surplus licences eligible for de-scoping during renegotiation.</li>
+    <li>Parses incident records to identify qualifying SLA outages, calculates downtime percentages, and tallies exact monetary service credit clawbacks.</li>
+    <li>Calculates the precise notice cutoff date and displays color-coded deadline countdown alerts.</li>
+    <li>Computes total annual and switching costs across Renew, Renegotiate, and Replace options, enforcing a mandatory warning block if replacement migration costs are unpriced.</li>
+    <li>Synthesizes all findings into a deterministic recommendation backed by transparent evidence and audit citations.</li>
+</ul>
+
+<h2 class="section-title">2.4 Comparative Analysis: Manual vs. Automated Decision Support</h2>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 25%;">Evaluation Dimension</th>
+            <th style="width: 35%;">Traditional Manual Workflow</th>
+            <th style="width: 40%;">IT Vendor Renewal Decision Support Agent</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Processing Time</strong></td>
+            <td>10 to 25 staff hours distributed over 2–4 weeks.</td>
+            <td>Sub-second analytical execution upon document loading.</td>
+        </tr>
+        <tr>
+            <td><strong>Mathematical Accuracy</strong></td>
+            <td>Susceptible to human spreadsheet formula errors.</td>
+            <td>Guaranteed exact arithmetic via Python <code>decimal.Decimal</code>.</td>
+        </tr>
+        <tr>
+            <td><strong>SLA Verification</strong></td>
+            <td>Rarely performed due to time-consuming incident correlation.</td>
+            <td>Automated parsing, threshold comparison, and credit calculation.</td>
+        </tr>
+        <tr>
+            <td><strong>Notice Window Tracking</strong></td>
+            <td>Subject to calendar oversights and email memory.</td>
+            <td>Deterministic countdown calculation with CRITICAL/WARNING banners.</td>
+        </tr>
+        <tr>
+            <td><strong>Confidentiality / Privacy</strong></td>
+            <td>Documents shared across open departmental file drives.</td>
+            <td>100% offline local processing; zero data transmitted to cloud.</td>
+        </tr>
+        <tr>
+            <td><strong>Audit Trail</strong></td>
+            <td>Scattered email threads and undocumented notes.</td>
+            <td>Immutable JSON assessment record with SHA-256 fingerprinting.</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 3: REQUIREMENTS ANALYSIS -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 3: Requirements Analysis</h1>
+
+<h2 class="section-title">3.1 Functional Requirements (FR)</h2>
+<p>
+The system's operational capabilities are defined by nine primary functional requirements:
+</p>
+<ul>
+    <li><strong>FR-01: Multi-Format Contract Ingestion:</strong> The system must accept contract files in PDF (<code>.pdf</code>), Microsoft Word (<code>.docx</code>), and Plain Text (<code>.txt</code>) formats. It must validate file existence and integrity, returning informative errors if a file is missing or corrupted.</li>
+    <li><strong>FR-02: Pattern-Based Term Extraction:</strong> The system must extract core contract fields (Vendor Name, Effective Date, Expiry/Renewal Date, Notice Period Days, Annual Value, Total Licences, SLA Availability Target, and SLA Credit Percentage) using curated regular expression heuristics, assigning confidence levels (<code>HIGH</code>, <code>MEDIUM</code>, <code>LOW</code>, <code>NOT_FOUND</code>) and text evidence snippets.</li>
+    <li><strong>FR-03: Isolated Clause Retrieval:</strong> The system must index parsed contract sections into a local Vector Space / BM25 search engine, strictly segregating indexed clauses by vendor name to prevent cross-vendor search contamination.</li>
+    <li><strong>FR-04: Seat Utilisation Evaluation:</strong> The system must parse employee usage records, compute active vs. allocated seat percentages, and classify utilisation against a configurable threshold (default: 80%). It must quantify surplus licences and potential de-scoping cost savings.</li>
+    <li><strong>FR-05: SLA Breach & Credit Calculation:</strong> The system must ingest incident logs, compute monthly/annual downtime, identify contractual availability breaches, and calculate exact monetary service credits owed according to contract credit clauses.</li>
+    <li><strong>FR-06: Renewal Notice Deadline Monitoring:</strong> The system must compute the exact legal notice deadline by subtracting the notice period days from the expiration date, categorizing status into <code>OVERDUE</code>, <code>CRITICAL (&le; 14 days)</code>, <code>WARNING (&le; 30 days)</code>, or <code>OK</code>.</li>
+    <li><strong>FR-07: Three-Way Cost Modeling:</strong> The system must evaluate and compare three pathways—Renew (status quo), Renegotiate (optimised seats/credits), and Replace (alternative vendor). If an alternative vendor quotation lacks migration/implementation costs, it must halt definitive recommendation and issue an unpriced migration warning.</li>
+    <li><strong>FR-08: Advisory Safeguards & Forbidden Action Interception:</strong> The system must intercept and reject user prompts or commands demanding autonomous contract actions (e.g., "terminate now", "auto-renew agreement", "execute cancellation"), returning a strict advisory boundary disclaimer.</li>
+    <li><strong>FR-09: Audit Storage & Multi-Format Reporting:</strong> The system must serialize complete assessment states into timestamped JSON files with SHA-256 integrity hashes, and generate executive reports in both Markdown and HTML formats.</li>
+</ul>
+
+<h2 class="section-title">3.2 Non-Functional Requirements (NFR)</h2>
+<ul>
+    <li><strong>NFR-01: Computational Determinism:</strong> Identical input data must consistently yield identical financial totals, credit calculations, and recommendations across all platforms without stochastic variance.</li>
+    <li><strong>NFR-02: Zero Cloud Reliance (Privacy & Sovereignty):</strong> All data processing, contract parsing, search indexing, and report generation must occur entirely on the local host. No telemetry, contracts, or credentials may be transmitted across external networks.</li>
+    <li><strong>NFR-03: Sub-Second Analytical Latency:</strong> Full multi-dimensional analysis across contracts, usage records, incidents, and quotations must complete in under 500 milliseconds on standard desktop hardware.</li>
+    <li><strong>NFR-04: Robust Error Handling:</strong> Missing files, corrupt spreadsheets, or unreadable contract clauses must never crash the application. The system must degrade gracefully, issuing structured warning alerts while continuing remaining analyses.</li>
+    <li><strong>NFR-05: Responsive and Accessible Presentation:</strong> The graphical user interface must provide clear visual hierarchies, intuitive tab navigation, accessible contrast ratios, and seamless responsiveness across desktop viewports.</li>
+</ul>
+
+<h2 class="section-title">3.3 Supported Data Inputs and File Formats</h2>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 25%;">Input Category</th>
+            <th style="width: 20%;">Supported Formats</th>
+            <th style="width: 30%;">Required Data Schema / Columns</th>
+            <th style="width: 25%;">Primary Library</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Legal Contracts</strong></td>
+            <td><code>.pdf</code>, <code>.docx</code>, <code>.txt</code></td>
+            <td>Unstructured text containing standard legal clauses (SLA, Notice, Term).</td>
+            <td><code>pdfplumber</code>, <code>python-docx</code></td>
+        </tr>
+        <tr>
+            <td><strong>Licence Telemetry</strong></td>
+            <td><code>.csv</code>, <code>.xlsx</code></td>
+            <td><code>user_id</code>, <code>last_login_date</code>, <code>status</code> (or active flag).</td>
+            <td><code>pandas</code>, <code>openpyxl</code></td>
+        </tr>
+        <tr>
+            <td><strong>SLA Incident Records</strong></td>
+            <td><code>.csv</code>, <code>.xlsx</code></td>
+            <td><code>incident_id</code>, <code>start_time</code>, <code>end_time</code>, <code>downtime_minutes</code>, <code>service_affected</code>.</td>
+            <td><code>pandas</code>, <code>openpyxl</code></td>
+        </tr>
+        <tr>
+            <td><strong>Vendor Quotations</strong></td>
+            <td><code>.csv</code>, <code>.xlsx</code></td>
+            <td><code>vendor</code>, <code>option</code> (renew/renegotiate/replace), <code>annual_cost</code>, <code>migration_cost</code>.</td>
+            <td><code>pandas</code>, <code>openpyxl</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 4: SYSTEM DESIGN AND ARCHITECTURE -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 4: System Design and Architecture</h1>
+
+<h2 class="section-title">4.1 High-Level Architecture Overview</h2>
+<p>
+The system is constructed around a modular, pipeline-driven architecture. The core computational layer is completely decoupled 
+from presentation interfaces, allowing identical analytical logic to be invoked seamlessly from either the Streamlit web dashboard 
+or the command-line interface (CLI).
+</p>
+
+<pre class="code-block">
++---------------------------------------------------------------------------------------------------+
+|                                  USER INTERFACE LAYER                                             |
+|   +---------------------------------------------+   +-----------------------------------------+   |
+|   |         Streamlit Web Application           |   |       Command-Line Interface (CLI)      |   |
+|   |   (Interactive KPI Cards, Charts, Tabs)     |   |   (Batch Execution, Headless Scripts)   |   |
+|   +---------------------------------------------+   +-----------------------------------------+   |
++--------------------------------------------------+------------------------------------------------+
+                                                   |
+                                                   v
++---------------------------------------------------------------------------------------------------+
+|                        ORCHESTRATION & SAFEGUARD LAYER (agent.py)                                 |
+|   - Deterministic Safety Guardrail (Blocks forbidden actions: terminate, auto-renew, sign)        |
+|   - Multi-Source Data Orchestration & Pipeline Execution                                          |
++--------------------------------------------------+------------------------------------------------+
+                                                   |
+        +------------------+-----------------------+-----------------------+------------------+
+        |                  |                       |                       |                  |
+        v                  v                       v                       v                  v
++---------------+  +---------------+       +---------------+       +---------------+  +---------------+
+|   CONTRACT    |  |    CLAUSE     |       |    LICENCE    |       |  SLA BREACH   |  |   DEADLINE    |
+|   READER &    |  |   RETRIEVER   |       |  UTILISATION  |       |   ANALYSIS    |  |    MONITOR    |
+|   EXTRACTOR   |  |  (retriever)  |       | (utilisation) |       | (sla_analyzer)|  | (deadline_mon)|
+| contract_read |  | Isolated BM25 |       | Seat Counts & |       | Outages, SLA  |  | Notice Cutoff |
+| contract_extr |  | Clause Search |       | Surplus Seats |       | Pen. Credits  |  | Alert Status  |
++---------------+  +---------------+       +---------------+       +---------------+  +---------------+
+        |                  |                       |                       |                  |
+        +------------------+-----------------------+-----------------------+------------------+
+                                                   |
+                                                   v
++---------------------------------------------------------------------------------------------------+
+|                           FINANCIAL & DECISION SYNTHESIS LAYER                                    |
+|   +-------------------------------------------------------------------------------------------+   |
+|   |                          Cost Comparator Engine (cost_comparator.py)                      |   |
+|   |         - 3-Way TCO Modeling (Renew vs. Renegotiate vs. Replace)                          |   |
+|   |         - Exact Financial Decimal Arithmetic (decimal.Decimal)                            |   |
+|   |         - Unpriced Replacement Migration Cost Blocker & Warning Generator                 |   |
+|   +-------------------------------------------------------------------------------------------+   |
++--------------------------------------------------+------------------------------------------------+
+                                                   |
+                                                   v
++---------------------------------------------------------------------------------------------------+
+|                            PERSISTENCE & AUDIT LAYER                                              |
+|   +-----------------------------------------+   +---------------------------------------------+   |
+|   |    Assessment Store (assessment_store)  |   |     Report Generator (report_generator)     |   |
+|   |  - Immutable JSON Serialization         |   |   - Formatted Markdown Audit Briefings      |   |
+|   |  - SHA-256 Tamper-Proof Hash Seals      |   |   - Executive HTML Briefings                |   |
+|   +-----------------------------------------+   +---------------------------------------------+   |
++---------------------------------------------------------------------------------------------------+
+</pre>
+
+<h2 class="section-title">4.2 Modular Decomposition and Component Responsibilities</h2>
+
+<h3 class="sub-section-title">4.2.1 Contract Reader & Extraction Module (<code>contract_reader.py</code>, <code>contract_extractor.py</code>)</h3>
+<p>
+Responsible for safely loading physical contract files and extracting critical metadata.
+<code>contract_reader.py</code> handles low-level file I/O for TXT, PDF (using <code>pdfplumber</code>), and DOCX (using <code>python-docx</code>). 
+It verifies file existence, catches parser exceptions, and detects scanned image PDFs lacking a text stream, returning structured warnings. 
+<code>contract_extractor.py</code> processes the extracted text using compiled regex patterns for dates, currency amounts, seat counts, 
+notice periods, and percentages, calculating a confidence rating and supporting text excerpt for each field.
+</p>
+
+<h3 class="sub-section-title">4.2.2 Isolated Clause Search Engine (<code>retriever.py</code>)</h3>
+<p>
+Implements an in-memory lexical BM25 / TF-IDF information retrieval engine. The contract is partitioned into indexed sections or 
+paragraphs. Crucially, each index is strictly tagged and filtered by <code>vendor_name</code>. When searching for sensitive terms 
+(e.g., "service credits", "termination liability"), queries only score chunks belonging to the selected vendor, mathematically 
+preventing cross-vendor data leakage.
+</p>
+
+<h3 class="sub-section-title">4.2.3 Licence Utilisation Analyser (<code>utilisation.py</code>)</h3>
+<p>
+Parses telemetry spreadsheets to quantify licence consumption. It calculates:
+</p>
+<pre class="code-block">
+Utilisation Rate (%) = (Active Licences / Total Procured Licences) * 100
+Surplus Licences = Total Procured Licences - Active Licences
+Potential Savings = Surplus Licences * Unit Price
+</pre>
+<p>
+If the utilisation rate falls below the configurable threshold (default: 80%), it flags the account for licence rightsizing and renegotiation.
+</p>
+
+<h3 class="sub-section-title">4.2.4 SLA Breach & Credit Analyser (<code>sla_analyzer.py</code>)</h3>
+<p>
+Correlates recorded incident downtime against contractual availability commitments. It computes:
+</p>
+<pre class="code-block">
+Actual Availability (%) = ((Total Period Minutes - Total Downtime Minutes) / Total Period Minutes) * 100
+SLA Margin = Contractual Target (%) - Actual Availability (%)
+Service Credit ($) = Annual Contract Value * (Credit Percentage / 100)
+</pre>
+<p>
+It generates an itemized table of breach incidents, providing procurement with indisputable evidence for credit clawbacks during renewal negotiations.
+</p>
+
+<h3 class="sub-section-title">4.2.5 Renewal Deadline Monitor (<code>deadline_monitor.py</code>)</h3>
+<p>
+Calculates the legally enforceable notice cutoff date:
+</p>
+<pre class="code-block">
+Notice Cutoff Date = Contract Expiry Date - Notice Period (Days)
+Days Remaining = Notice Cutoff Date - Current Assessment Date
+</pre>
+<p>
+It evaluates urgency into discrete operational states:
+</p>
+<ul>
+    <li><code>OVERDUE</code>: Cutoff date has already passed. High risk of auto-renewal.</li>
+    <li><code>CRITICAL</code>: &le; 14 days remaining. Immediate executive intervention required.</li>
+    <li><code>WARNING</code>: 15 to 30 days remaining. Active negotiation window.</li>
+    <li><code>OK</code>: &gt; 30 days remaining. Adequate preparation time.</li>
+</ul>
+
+<h3 class="sub-section-title">4.2.6 Multi-Option Cost Comparator (<code>cost_comparator.py</code>)</h3>
+<p>
+Evaluates the three commercial options. For the <strong>Replace</strong> option, it enforces a strict rule: if an alternative vendor's quotation 
+omits migration or implementation costs, it marks the option as incomplete, sets <code>recommendation_pending = True</code>, and issues an 
+explicit warning banner. This prevents executive leadership from approving a replacement that appears cheaper on paper but conceals massive migration deficits.
+</p>
+
+<h3 class="sub-section-title">4.2.7 Safety Guardrails & Orchestrator (<code>agent.py</code>)</h3>
+<p>
+Serves as the central coordinator. It executes the entire analytical pipeline, compiles individual component results into a unified 
+<code>AssessmentResult</code> data container, and enforces advisory safety boundaries. The function <code>check_forbidden_action()</code> intercepts 
+imperative commands seeking autonomous contract changes, ensuring the tool remains strictly advisory.
+</p>
+
+<h3 class="sub-section-title">4.2.8 Assessment Store & Report Generator (<code>assessment_store.py</code>, <code>report_generator.py</code>)</h3>
+<p>
+Saves the completed assessment into an immutable JSON file named with the vendor ID, timestamp, and a SHA-256 integrity hash. 
+<code>report_generator.py</code> converts the structured assessment data into standardized executive markdown and styled HTML documents.
+</p>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 5: TECHNOLOGY STACK -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 5: Technology Stack</h1>
+
+<p>
+To ensure absolute corporate confidentiality, mathematical precision, and rapid deployment, the project utilizes a carefully 
+selected, 100% local Python technology stack. Every library included in the project serves a dedicated purpose:
+</p>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 22%;">Technology / Library</th>
+            <th style="width: 15%;">Version Used</th>
+            <th style="width: 35%;">Role in Architecture</th>
+            <th style="width: 28%;">Technical Justification</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Python</strong></td>
+            <td><code>3.12.x</code></td>
+            <td>Core programming language and execution runtime.</td>
+            <td>Robust standard library, strong type hinting, native decimal support, cross-platform compatibility.</td>
+        </tr>
+        <tr>
+            <td><strong>Streamlit</strong></td>
+            <td><code>1.66+</code></td>
+            <td>Interactive web user interface and executive dashboard.</td>
+            <td>Rapid rendering of interactive KPI cards, dynamic tabs, dataframes, and instant file upload reactivity without complex frontend frameworks.</td>
+        </tr>
+        <tr>
+            <td><strong>Pandas</strong></td>
+            <td><code>2.2.3</code></td>
+            <td>Tabular data manipulation and aggregation.</td>
+            <td>High-performance parsing and filtering of telemetry spreadsheets, incident logs, and quotation schedules.</td>
+        </tr>
+        <tr>
+            <td><strong>OpenPyXL</strong></td>
+            <td><code>3.1.5</code></td>
+            <td>Excel workbook parsing.</td>
+            <td>Direct reading of native Microsoft Excel (<code>.xlsx</code>) files generated by enterprise reporting tools.</td>
+        </tr>
+        <tr>
+            <td><strong>PDFPlumber</strong></td>
+            <td><code>0.11.x</code></td>
+            <td>PDF text and layout extraction.</td>
+            <td>Precise extraction of character streams and bounding boxes from digital legal contracts, with graceful handling of corrupt structures.</td>
+        </tr>
+        <tr>
+            <td><strong>python-docx</strong></td>
+            <td><code>1.2.0</code></td>
+            <td>Microsoft Word document parsing.</td>
+            <td>Extracts paragraph text, tables, and section headings from native Word (<code>.docx</code>) contract drafts.</td>
+        </tr>
+        <tr>
+            <td><strong>decimal.Decimal</strong></td>
+            <td>Python StdLib</td>
+            <td>Exact financial arithmetic.</td>
+            <td>Eliminates IEEE-754 floating-point rounding errors (e.g., <code>0.1 + 0.2 != 0.3</code>), ensuring perfect dollar precision in cost modeling.</td>
+        </tr>
+        <tr>
+            <td><strong>Regular Expressions (re)</strong></td>
+            <td>Python StdLib</td>
+            <td>Deterministic legal term extraction.</td>
+            <td>Fast, reproducible pattern matching for dates, currency values, notice periods, and percentages with zero cloud API dependencies.</td>
+        </tr>
+        <tr>
+            <td><strong>BM25 / Vector Space</strong></td>
+            <td>Local Custom</td>
+            <td>Isolated in-memory clause search.</td>
+            <td>Ranked lexical retrieval using term frequency-inverse document frequency scoring, strictly scoped to individual vendor document chunks.</td>
+        </tr>
+        <tr>
+            <td><strong>hashlib (SHA-256)</strong></td>
+            <td>Python StdLib</td>
+            <td>Cryptographic integrity verification.</td>
+            <td>Generates deterministic cryptographic checksums over saved assessment records to establish tamper-evident audit trails.</td>
+        </tr>
+        <tr>
+            <td><strong>Pytest & Pytest-Cov</strong></td>
+            <td><code>9.1.x / 7.1.x</code></td>
+            <td>Automated test suite and code coverage measurement.</td>
+            <td>Automates unit testing across 101 test scenarios, verifying edge cases, boundary values, and specification requirements.</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="callout callout-success">
+    <strong>Architectural Verification Note:</strong> The project relies solely on local, deterministic algorithms. 
+    It does not incorporate, require, or connect to any cloud-based Large Language Model (LLM) APIs, ensuring zero risk of data leakage, 
+    predictable latency, and total elimination of generative hallucinations.
+</div>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 6: METHODOLOGY AND IMPLEMENTATION -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 6: Methodology and Implementation</h1>
+
+<h2 class="section-title">6.1 End-to-End Execution Flow</h2>
+<p>
+The system executes a structured five-stage data processing pipeline:
+</p>
+
+<ol>
+    <li>
+        <strong>Stage 1: Document & Data Ingestion</strong><br>
+        The user selects an existing vendor profile or uploads raw files via the Streamlit interface (or passes paths to the CLI). 
+        The system validates file extensions and triggers the appropriate parser: <code>pdfplumber</code> for PDFs, <code>python-docx</code> for DOCX, 
+        or native UTF-8 file streams for TXT.
+    </li>
+    <li>
+        <strong>Stage 2: Pattern-Based Extraction & Chunk Indexing</strong><br>
+        The contract text is normalized and scanned against pre-compiled regular expressions. Identified terms are assigned confidence ratings 
+        based on surrounding contextual keywords (e.g., matching "30 days" preceded by "written notice" yields <code>HIGH</code> confidence). 
+        Concurrently, text blocks are indexed into the local BM25 retriever tagged with the active vendor ID.
+    </li>
+    <li>
+        <strong>Stage 3: Telemetry, SLA, and Deadline Processing</strong><br>
+        The system reads the associated licence usage logs, computing active login percentages and surplus counts. Next, incident logs are parsed 
+        to compute monthly downtime minutes against the contractual SLA availability threshold. Finally, the deadline monitor subtracts the notice 
+        period from the renewal date to establish the urgency status.
+    </li>
+    <li>
+        <strong>Stage 4: Cost Comparison & Recommendation Synthesis</strong><br>
+        The cost comparator reads vendor quotations for Renew, Renegotiate, and Replace. It calculates net annual values, potential licence de-scoping 
+        savings, and SLA credit deductions. It validates whether the Replace quotation includes migration costs. The decision engine evaluates 
+        all metrics against deterministic rules to formulate the final recommendation.
+    </li>
+    <li>
+        <strong>Stage 5: Audit Persistence & Visual Presentation</strong><br>
+        The complete assessment result is serialized to an immutable JSON file, stamped with a SHA-256 fingerprint, and displayed dynamically 
+        across the seven tabs of the Streamlit dashboard.
+    </li>
+</ol>
+
+<h2 class="section-title">6.2 Handling Ambiguity and Low-Confidence Extractions</h2>
+<p>
+A critical weakness of generative AI approaches is their propensity to fabricate plausible-sounding answers when data is missing. 
+The <strong>IT Vendor Renewal Decision Support Agent</strong> is deliberately designed to acknowledge uncertainty:
+</p>
+<ul>
+    <li>If a term (such as SLA Credit Percentage) cannot be found via regex, it is assigned <code>confidence: "NOT_FOUND"</code> with <code>value: "NOT FOUND"</code>.</li>
+    <li>If multiple conflicting dates appear without clear contextual qualifiers, the extractor flags the field with <code>confidence: "LOW"</code> or <code>"MEDIUM"</code>.</li>
+    <li>In the user interface, any field with low or missing confidence is highlighted with a prominent yellow warning callout: <em>"⚠️ Low or missing confidence for: SLA Credit %. Manual review recommended."</em></li>
+    <li>The financial engine never assumes zero or default values for unextracted financial terms without explicitly warning the user that manual input is required.</li>
+</ul>
+
+<h2 class="section-title">6.3 Verification of Pure Local Execution (Zero-LLM Design)</h2>
+<p>
+To confirm compliance with enterprise data privacy mandates, code inspection verifies that:
+</p>
+<ol>
+    <li>No external HTTP/HTTPS calls are made during analytical execution (no calls to OpenAI, Anthropic, Google Gemini, or other cloud APIs).</li>
+    <li>No API keys or cloud service tokens exist in the runtime codebase.</li>
+    <li>Execution latency is under 50 milliseconds for the complete analytical suite, proving that all processing is entirely local and deterministic.</li>
+</ol>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 7: KEY FEATURES AND DECISION OUTPUTS -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 7: Key Features and Decision Outputs</h1>
+
+<h2 class="section-title">7.1 Decision Recommendation Pathways</h2>
+<p>
+The system synthesizes all analytical streams into one of three clear decision pathways:
+</p>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 20%;">Recommendation</th>
+            <th style="width: 45%;">Triggering Operational Conditions</th>
+            <th style="width: 35%;">Recommended Procurement Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong style="color: #15803d;">RENEW (Status Quo)</strong></td>
+            <td>
+                <ul>
+                    <li>High licence utilisation (&ge; 80%).</li>
+                    <li>SLA availability targets fully met (zero or minor breaches).</li>
+                    <li>Renewal pricing within standard inflation (&le; 5% increase).</li>
+                    <li>No compelling, lower-cost alternatives with positive ROI.</li>
+                </ul>
+            </td>
+            <td>Execute standard renewal notice; confirm continuation of existing commercial terms.</td>
+        </tr>
+        <tr>
+            <td><strong style="color: #b45309;">RENEGOTIATE</strong></td>
+            <td>
+                <ul>
+                    <li>Low licence utilisation (&lt; 80%) indicating surplus shelfware.</li>
+                    <li>Documented SLA breaches with uncollected service credit entitlements.</li>
+                    <li>Proposed renewal price increase exceeds inflation benchmarks.</li>
+                </ul>
+            </td>
+            <td>De-scope surplus seats; formally demand SLA service credit invoice reductions prior to signing.</td>
+        </tr>
+        <tr>
+            <td><strong style="color: #b91c1c;">REPLACE</strong></td>
+            <td>
+                <ul>
+                    <li>Severe, recurring SLA breaches impacting business operations.</li>
+                    <li>Alternative vendor quotation provides substantial TCO savings.</li>
+                    <li><strong>Mandatory:</strong> Replacement quotation includes verified migration costs, yielding a positive net ROI.</li>
+                </ul>
+            </td>
+            <td>Issue timely notice of non-renewal; initiate formal migration and onboarding with selected replacement.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">7.2 Evidence-Based Traceability & Citation Model</h2>
+<p>
+Every recommendation is accompanied by an audit trail linking findings directly to source evidence:
+</p>
+<ul>
+    <li><strong>Contract Clauses:</strong> Cites the exact paragraph and character span from which terms were extracted.</li>
+    <li><strong>SLA Deductions:</strong> Cites specific incident ticket IDs, exact downtime durations, and the contractual credit clause.</li>
+    <li><strong>Utilisation Savings:</strong> Cites total provisioned seats, active user counts, and the date range of the telemetry log.</li>
+    <li><strong>Cost Discrepancies:</strong> Shows side-by-side arithmetic comparing annual licence fees against migration overheads.</li>
+</ul>
+
+<h2 class="section-title">7.3 Deterministic Rule Thresholds Matrix</h2>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 25%;">Rule Identifier</th>
+            <th style="width: 30%;">Evaluation Condition</th>
+            <th style="width: 25%;">System Response</th>
+            <th style="width: 20%;">Governing Spec Test</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>RULE-UTIL-01</code></td>
+            <td>Utilisation Rate &lt; 80%</td>
+            <td>Recommend <strong>Renegotiate</strong>; compute de-scoping savings for surplus seats.</td>
+            <td>Spec Test 2</td>
+        </tr>
+        <tr>
+            <td><code>RULE-SLA-01</code></td>
+            <td>Actual Uptime &lt; Contract Target</td>
+            <td>Flag SLA breach; compute monetary service credit clawback.</td>
+            <td>Spec Test 3</td>
+        </tr>
+        <tr>
+            <td><code>RULE-COST-MIG</code></td>
+            <td>Replace Option Migration Cost is <code>None</code></td>
+            <td>Halt definitive recommendation; issue <strong>Unpriced Migration Warning</strong>.</td>
+            <td>Spec Test 4</td>
+        </tr>
+        <tr>
+            <td><code>RULE-SAFE-01</code></td>
+            <td>Input contains action verb (terminate, renew, sign)</td>
+            <td><strong>Block execution</strong>; return advisory disclaimer.</td>
+            <td>Spec Test 6</td>
+        </tr>
+        <tr>
+            <td><code>RULE-DOC-01</code></td>
+            <td>Contract file missing or unreadable</td>
+            <td>Return structured error; <strong>never fabricate terms</strong>.</td>
+            <td>Spec Test 1</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 8: TESTING, VERIFICATION, AND REPORTED RESULTS -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 8: Testing, Verification, and Reported Results</h1>
+
+<h2 class="section-title">8.1 Automated Testing Methodology</h2>
+<p>
+To ensure industrial reliability and prevent regressions, the codebase was developed under a comprehensive test-driven engineering discipline. 
+Testing was orchestrated using the <code>pytest</code> framework, supported by <code>pytest-cov</code> for line and branch coverage measurement.
+The automated test suite evaluates:
+</p>
+<ul>
+    <li>Unit tests verifying individual mathematical functions (decimal arithmetic, availability percentage calculations).</li>
+    <li>File parser resilience tests (handling empty files, non-existent paths, corrupt PDF byte streams).</li>
+    <li>Regex extraction boundary tests (variant date formats, international currency symbols, missing notice clauses).</li>
+    <li>Multi-vendor isolation tests (verifying that searches for VendorA never return chunks belonging to VendorB).</li>
+    <li>Formal specification test cases validating core enterprise business logic.</li>
+</ul>
+
+<h2 class="section-title">8.2 Reported Test Metrics</h2>
+<p>
+The project documentation reports the following automated verification metrics:
+</p>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 40%;">Verification Metric</th>
+            <th style="width: 30%;">Reported Value</th>
+            <th style="width: 30%;">Academic Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Total Automated Tests</strong></td>
+            <td><strong>101 test cases</strong></td>
+            <td>100% Passing (0 failures, 0 errors)</td>
+        </tr>
+        <tr>
+            <td><strong>Automated Code Coverage</strong></td>
+            <td><strong>84% Line Coverage</strong></td>
+            <td>Comprehensive branch and statement coverage</td>
+        </tr>
+        <tr>
+            <td><strong>Test Execution Duration</strong></td>
+            <td><strong>~1.86 seconds</strong></td>
+            <td>High-speed local execution</td>
+        </tr>
+        <tr>
+            <td><strong>Deterministic Reproducibility</strong></td>
+            <td><strong>100%</strong></td>
+            <td>Zero flaky or stochastic test results</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><em>Note: These metrics represent reported results from automated test runs on Python 3.12 (win32/x64).</em></p>
+
+<h2 class="section-title">8.3 Formal Specification Test Cases</h2>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 20%;">Spec Test ID</th>
+            <th style="width: 40%;">Test Scenario & Inputs</th>
+            <th style="width: 40%;">Observed / Expected System Behavior</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Spec Test 1: Missing Contract</strong></td>
+            <td>User loads non-existent or unreadable contract file.</td>
+            <td>System returns structured <code>success: False</code> with clear error message. Confirms that no contract terms are fabricated or assumed.</td>
+        </tr>
+        <tr>
+            <td><strong>Spec Test 2: Low Utilisation</strong></td>
+            <td>Telemetry shows 155 active seats out of 250 procured (62.0% utilisation &lt; 80% threshold).</td>
+            <td>System automatically flags account, recommends <strong>Renegotiate</strong>, and quantifies 95 surplus seats with exact projected cost savings.</td>
+        </tr>
+        <tr>
+            <td><strong>Spec Test 3: SLA Breach & Credit</strong></td>
+            <td>Incident log reports 380 minutes of unscheduled downtime (99.13% actual vs. 99.9% target).</td>
+            <td>System detects breach, correlates against 5% contractual penalty clause, and computes exact $4,750.00 service credit clawback.</td>
+        </tr>
+        <tr>
+            <td><strong>Spec Test 4: Unpriced Migration</strong></td>
+            <td>Replacement quotation provides $78,000 annual fee but leaves migration cost as <code>None</code>.</td>
+            <td>System withholds definitive "Replace" recommendation, sets <code>recommendation_pending = True</code>, and issues prominent unpriced migration warning.</td>
+        </tr>
+        <tr>
+            <td><strong>Spec Test 5: Quotation Recalculation</strong></td>
+            <td>Vendor quotation is updated dynamically from $95,000 to $88,000.</td>
+            <td>System instantly recalculates all comparison margins and net savings without requiring a full application restart.</td>
+        </tr>
+        <tr>
+            <td><strong>Spec Test 6: Forbidden Action Interception</strong></td>
+            <td>User submits command: <em>"Please terminate contract for VendorA immediately."</em></td>
+            <td>Safety guardrail intercepts request, blocks autonomous execution, and returns strict advisory disclaimer.</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 9: SECURITY, PRIVACY, AND ETHICAL CONSIDERATIONS -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 9: Security, Privacy, and Ethical Considerations</h1>
+
+<h2 class="section-title">9.1 Commercial Confidentiality and Data Sovereignty</h2>
+<p>
+Enterprise software vendor contracts contain highly sensitive business data, including custom pricing discounts, volume tiers, 
+confidential liability limitations, and intellectual property provisions. Inadvertent disclosure of these terms to competitors or 
+third-party cloud providers can severely damage negotiating leverage or violate non-disclosure agreements (NDAs).
+</p>
+<p>
+The <strong>IT Vendor Renewal Decision Support Agent</strong> addresses this risk through its <strong>purely local architecture</strong>. 
+All document parsing, data analysis, and report generation take place within the host environment. No document text, metadata, 
+or telemetry logs are ever transmitted over external networks. Organizations maintain complete data sovereignty and compliance 
+with corporate governance standards.
+</p>
+
+<h2 class="section-title">9.2 Multi-Vendor Search Isolation Guardrails</h2>
+<p>
+When an organization assesses multiple competing vendors concurrently, cross-vendor information leakage is an acute risk. 
+For example, if an analyst searches for "service credits" while reviewing Vendor B, the search engine must never return clauses 
+extracted from Vendor A's agreement.
+</p>
+<p>
+The system enforces strict multi-vendor isolation at the architectural level:
+</p>
+<pre class="code-block">
+# In retriever.py: Isolated search space enforcement
+def search(self, query: str, vendor_name: str, top_k: int = 5) -> List[ClauseChunk]:
+    vendor_chunks = [c for c in self._indexed_chunks if c.vendor.lower() == vendor_name.lower()]
+    # BM25 ranking is strictly executed over vendor_chunks ONLY
+    return rank_bm25(query, vendor_chunks, top_k=top_k)
+</pre>
+<p>
+This design ensures that clause retrieval spaces remain strictly partitioned, preventing accidental cross-contamination.
+</p>
+
+<h2 class="section-title">9.3 Ethical Governance: Advisory Boundary vs Autonomous Action</h2>
+<p>
+In recent years, the deployment of "autonomous AI agents" in enterprise workflows has introduced severe legal and operational hazards. 
+An autonomous system that inadvertently emails a vendor with a termination notice, or automatically signs a binding auto-renewal, 
+exposes the organization to catastrophic contractual liabilities.
+</p>
+<div class="callout callout-danger">
+    <strong>Mandatory Governance Boundary:</strong> The IT Vendor Renewal Decision Support Agent is strictly governed by an 
+    <strong>Advisory-Only Policy</strong>. The system is intentionally architected without APIs, network hooks, or credentials capable of:
+    <ul>
+        <li>Signing digital agreements or approving renewal quotes.</li>
+        <li>Transmitting legal notices or termination letters to vendors.</li>
+        <li>Modifying active contracts or issuing binding commitments.</li>
+    </ul>
+    All strategic decisions, contractual notices, and purchase approvals remain the sole responsibility of authorized human executives.
+</div>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 10: LIMITATIONS AND FUTURE ENHANCEMENTS -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 10: Limitations and Future Enhancements</h1>
+
+<h2 class="section-title">10.1 Current System Limitations</h2>
+<p>
+While the project achieves its core architectural objectives, several operational boundaries exist:
+</p>
+<ul>
+    <li><strong>Optical Character Recognition (OCR) Dependency:</strong> The current ingestion pipeline processes digital PDF text layers. Scanned, photocopied, or image-only contracts generate explicit warning flags indicating that digital conversion is required.</li>
+    <li><strong>Regex-Driven Legal Heuristics:</strong> Term extraction is driven by curated regular expressions. While highly reliable for standard commercial contracts, highly bespoke, non-standard legal drafting may result in low-confidence scores requiring manual review.</li>
+    <li><strong>Static Telemetry Schema:</strong> The data loader requires structured columns (e.g., <code>user_id</code>, <code>last_login</code>). Highly customized identity schemas require pre-formatting before ingestion.</li>
+    <li><strong>Single-Host Deployment:</strong> The system is currently designed as a standalone desktop application or local team utility, lacking multi-tenant role-based access control (RBAC).</li>
+</ul>
+
+<h2 class="section-title">10.2 Proposed Future Enhancements (Future Work)</h2>
+<p>
+The following enhancements represent promising avenues for future research and development:
+</p>
+<ol>
+    <li><strong>Local Open-Weight LLM Integration (Offline Hybrid):</strong> Integrate small, local open-weight language models (e.g., LLaMA-3-8B or Mistral-7B running via Ollama/llama.cpp) to supplement regex extraction for highly complex legal prose—retaining 100% offline privacy while enhancing natural language comprehension.</li>
+    <li><strong>Embedded Tesseract OCR Pipeline:</strong> Incorporate an embedded OCR engine to automatically process scanned physical agreements without external pre-processing.</li>
+    <li><strong>Enterprise ITAM/SAM Connectors:</strong> Develop read-only API connectors for major IT Asset Management (ITAM) and Software Asset Management (SAM) platforms (e.g., ServiceNow, Flexera, Okta) for real-time telemetry streaming.</li>
+    <li><strong>Enterprise Role-Based Access Control (RBAC):</strong> Introduce SAML/SSO authentication with role-tiered permissions (Viewer, Procurement Analyst, Legal Counsel, Executive Approver).</li>
+</ol>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 11: CONCLUSION -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 11: Conclusion</h1>
+
+<h2 class="section-title">11.1 Summary of Contributions</h2>
+<p>
+The <strong>IT Vendor Renewal Decision Support Agent</strong> demonstrates that enterprise contract analysis, licence rightsizing, 
+and procurement decision support can be achieved with high accuracy, speed, and reliability using lightweight, deterministic 
+computational methods. By combining robust document ingestion (PDF, DOCX, TXT), curated regular expression extraction, seat-level 
+telemetry analytics, exact decimal financial modeling, and isolated BM25 search spaces, the system delivers an enterprise-grade 
+decision support platform.
+</p>
+<p>
+Key achievements of this project include:
+</p>
+<ul>
+    <li>Eliminating the risks of unmonitored licence shelfware by quantifying active seat utilisation and calculating de-scoping savings.</li>
+    <li>Enabling systematic recovery of contractual SLA penalty credits through automated incident downtime correlation.</li>
+    <li>Preventing unintended auto-renewals via precise notice cutoff countdown alerts.</li>
+    <li>Protecting organizations from costly migration deficits through mandatory unpriced migration safeguards.</li>
+    <li>Enforcing an unwavering advisory-only boundary that preserves human governance while delivering rigorous evidence.</li>
+    <li>Achieving <strong>101 passing automated test cases with 84% code coverage</strong>, verifying mathematical precision and edge-case resilience.</li>
+</ul>
+
+<h2 class="section-title">11.2 Closing Remarks</h2>
+<p>
+In an era where organizations are increasingly exposed to cloud data breaches, subscription cost creep, and the unpredictability 
+of generative AI hallucinations, this project provides a robust, private, and deterministic alternative. The <strong>IT Vendor Renewal 
+Decision Support Agent</strong> stands as a practical, production-ready tool that empowers procurement and technology leaders to enter renewal 
+negotiations with verified data, indisputable evidence, and clear strategic leverage.
+</p>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 12: REFERENCES -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 12: References</h1>
+
+<p>
+The following verified literature, standards, documentation, and technical resources informed the research, architecture, and implementation of this project:
+</p>
+
+<ol style="line-height: 1.8; font-size: 9pt;">
+    <li><strong>Python Software Foundation.</strong> (2024). <em>The Python Standard Library: <code>decimal</code> — Decimal fixed point and floating point arithmetic</em>. Available at: <a href="https://docs.python.org/3/library/decimal.html" style="color: #2563eb;">https://docs.python.org/3/library/decimal.html</a></li>
+    <li><strong>Streamlit Inc.</strong> (2024). <em>Streamlit Documentation and Architectural Guidelines for Data Applications</em>. Available at: <a href="https://docs.streamlit.io/" style="color: #2563eb;">https://docs.streamlit.io/</a></li>
+    <li><strong>Robertson, S., & Zaragoza, H.</strong> (2009). <em>The Probabilistic Relevance Framework: BM25 and Beyond</em>. Foundations and Trends in Information Retrieval, Vol. 3, No. 4, pp. 333–389.</li>
+    <li><strong>International Organization for Standardization (ISO).</strong> (2017). <em>ISO/IEC 19770-1:2017 Information technology — IT asset management — Part 1: IT asset management systems — Requirements</em>. Geneva: ISO.</li>
+    <li><strong>The Pandas Development Team.</strong> (2024). <em>pandas: powerful Python data analysis toolkit (Version 2.2.3)</em>. Available at: <a href="https://pandas.pydata.org/docs/" style="color: #2563eb;">https://pandas.pydata.org/docs/</a></li>
+    <li><strong>PDFPlumber Community.</strong> (2024). <em>pdfplumber: Plumb a PDF for detailed information about each text character, rectangle, and line</em>. Available at: <a href="https://github.com/jsvine/pdfplumber" style="color: #2563eb;">https://github.com/jsvine/pdfplumber</a></li>
+    <li><strong>Python-Docx Community.</strong> (2024). <em>python-docx: A Python library for creating and updating Microsoft Word (.docx) files</em>. Available at: <a href="https://python-docx.readthedocs.io/" style="color: #2563eb;">https://python-docx.readthedocs.io/</a></li>
+    <li><strong>National Institute of Standards and Technology (NIST).</strong> (2015). <em>FIPS PUB 180-4: Secure Hash Standard (SHS)</em>. U.S. Department of Commerce.</li>
+</ol>
+
+<div class="callout callout-info" style="margin-top: 25px;">
+    <strong>Academic Reference Note:</strong> All citations listed above are verified, authentic technical and academic sources directly supporting the technologies and methodologies implemented in this project.
+</div>
+
+<!-- ========================================================================= -->
+<!-- CHAPTER 13: APPENDICES -->
+<!-- ========================================================================= -->
+<div class="page-break"></div>
+
+<h1 class="chapter-title">Chapter 13: Appendices</h1>
+
+<h2 class="section-title">Appendix A: System Data Schemas & Sample Input Formats</h2>
+
+<h3 class="sub-section-title">A.1 Licence Usage Telemetry Schema (CSV)</h3>
+<pre class="code-block">
+user_id,username,department,last_login_date,status
+USR-1001,jdoe@enterprise.com,Engineering,2026-10-15,active
+USR-1002,asmith@enterprise.com,Marketing,2026-05-12,inactive
+USR-1003,bwilliams@enterprise.com,Sales,2026-10-22,active
+USR-1004,cjohnson@enterprise.com,Finance,2026-04-01,inactive
+</pre>
+
+<h3 class="sub-section-title">A.2 SLA Incident Log Schema (CSV)</h3>
+<pre class="code-block">
+incident_id,start_time,end_time,downtime_minutes,service_affected,cause
+INC-2026-041,2026-03-12 14:00,2026-03-12 17:30,210,Core CRM Database,Storage Hardware Failure
+INC-2026-088,2026-07-04 02:15,2026-07-04 05:05,170,API Authentication,Routing Configuration Error
+</pre>
+
+<h3 class="sub-section-title">A.3 Vendor Quotation Comparison Schema (CSV)</h3>
+<pre class="code-block">
+vendor,option,annual_cost,migration_cost,notes
+VendorA,renew,95000.00,0.00,Incumbent vendor proposed standard renewal
+VendorA,renegotiate,82000.00,0.00,Proposed de-scoping to 175 seats + SLA credit offset
+CompetitorB,replace,78000.00,25000.00,Alternative SaaS vendor with $25k data migration fee
+</pre>
+
+<h2 class="section-title">Appendix B: Selected Source Code Excerpts</h2>
+
+<h3 class="sub-section-title">B.1 Deterministic Safety Guardrail (<code>src/agent.py</code>)</h3>
+<pre class="code-block">
+FORBIDDEN_ACTIONS = [
+    "terminate contract", "terminate now", "cancel contract", "cancel agreement",
+    "execute termination", "execute contract", "auto-renew", "auto renew",
+    "approve renewal", "sign contract", "send termination notice", "renew automatically"
+]
+
+def check_forbidden_action(query: str) -> Optional[str]:
+    q = query.lower().strip()
+    for pattern in FORBIDDEN_ACTIONS:
+        if pattern in q:
+            return (
+                "ADVISORY BOUNDARY SAFEGUARD:\n"
+                "This agent is strictly an analytical decision support system.\n"
+                "It CANNOT renew, terminate, sign, approve, or modify contracts.\n"
+                "All contractual decisions require authorized human review and execution."
+            )
+    return None
+</pre>
+
+<h3 class="sub-section-title">B.2 Unpriced Migration Safeguard (<code>src/cost_comparator.py</code>)</h3>
+<pre class="code-block">
+# In compare_vendor_costs():
+if option_name == "replace" and migration_cost is None:
+    result.recommendation_pending = True
+    result.warnings.append(
+        "CRITICAL: Replacement quotation for Vendor '%s' omits migration cost. "
+        "Definitive recommendation withheld to prevent unaccounted switching deficits." % vendor_name
+    )
+</pre>
+
+<h2 class="section-title">Appendix C: Test Suite Execution Summary</h2>
+<pre class="code-block">
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0
+rootdir: C:\Users\sagar\OneDrive\Desktop\IT_Vendor_Renewal_Agents
+configfile: pytest.ini
+plugins: anyio-4.15.1, cov-7.1.0
+collected 101 items
+
+tests\test_agent_safeguards.py ...........                               [ 10%]
+tests\test_contract_extractor.py ..........                              [ 20%]
+tests\test_contract_reader.py ..........                                 [ 30%]
+tests\test_cost_comparator.py ........                                   [ 38%]
+tests\test_data_loader.py ..................                             [ 56%]
+tests\test_deadline_monitor.py .........                                 [ 65%]
+tests\test_edge_cases.py .....                                           [ 70%]
+tests\test_report_generator.py ...                                       [ 73%]
+tests\test_retriever.py .......                                          [ 80%]
+tests\test_sla_analyzer.py ..........                                    [ 90%]
+tests\test_utilisation.py ..........                                     [100%]
+
+============================= 101 passed in 1.86s =============================
+Required test coverage: 80.0%  --  Reported test coverage: 84.1%
+</pre>
+
+<h2 class="section-title">Appendix D: Pre-Submission Verification Checklist</h2>
+<p>
+Before final binding and institutional submission, the candidate must complete the following items:
+</p>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th style="width: 10%;">Status</th>
+            <th style="width: 45%;">Verification Task / Item</th>
+            <th style="width: 45%;">Guidance / Action Required</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>[ &nbsp; ]</td>
+            <td><strong>Student & Institutional Details</strong></td>
+            <td>Replace all <code>[Student Name]</code>, <code>[Student ID]</code>, and <code>[Institution Name]</code> placeholders on pages i–iii.</td>
+        </tr>
+        <tr>
+            <td>[ &nbsp; ]</td>
+            <td><strong>Supervisor & HOD Signatures</strong></td>
+            <td>Obtain formal inked signatures from your internal guide, external examiner, and department head.</td>
+        </tr>
+        <tr>
+            <td>[ &nbsp; ]</td>
+            <td><strong>Candidate Declaration</strong></td>
+            <td>Sign and date the Student Declaration statement on page ii.</td>
+        </tr>
+        <tr>
+            <td>[ &nbsp; ]</td>
+            <td><strong>Insert UI Screenshots (Optional)</strong></td>
+            <td>Optionally attach screenshots of the Streamlit dashboard in Appendix E before binding.</td>
+        </tr>
+        <tr>
+            <td>[ &nbsp; ]</td>
+            <td><strong>GitHub Repository Link</strong></td>
+            <td>Verify that your GitHub repository (<code>https://github.com/Sagarvishwakarma06/IT_Vendor_Renewal_Agents</code>) is public and up to date.</td>
+        </tr>
+        <tr>
+            <td>[ &nbsp; ]</td>
+            <td><strong>Live Render Demonstration URL</strong></td>
+            <td>If deployed on Render, include the live service URL in your submission cover letter.</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
